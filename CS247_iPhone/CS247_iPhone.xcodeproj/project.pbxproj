@@ -15,6 +15,9 @@
 		2899E5220DE3E06400AC0155 /* CS247_iPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* CS247_iPhoneViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* CS247_iPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* CS247_iPhoneViewController.m */; };
+		92D69CC11303B2F300A8BBDA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D69CC01303B2F300A8BBDA /* GameKit.framework */; };
+		92D69CD71303B75100A8BBDA /* GameKitCommunicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D69CD51303B75100A8BBDA /* GameKitCommunicatorViewController.m */; };
+		92D69CD81303B75100A8BBDA /* GameKitCommunicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D69CD61303B75100A8BBDA /* GameKitCommunicatorViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,10 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* CS247_iPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CS247_iPhone_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CS247_iPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CS247_iPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		92D69CC01303B2F300A8BBDA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		92D69CD41303B75100A8BBDA /* GameKitCommunicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitCommunicatorViewController.h; sourceTree = "<group>"; };
+		92D69CD51303B75100A8BBDA /* GameKitCommunicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitCommunicatorViewController.m; sourceTree = "<group>"; };
+		92D69CD61303B75100A8BBDA /* GameKitCommunicatorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameKitCommunicatorViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +48,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				92D69CC11303B2F300A8BBDA /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +62,9 @@
 				1D3623250D0F684500981E51 /* CS247_iPhoneAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* CS247_iPhoneViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* CS247_iPhoneViewController.m */,
+				92D69CD41303B75100A8BBDA /* GameKitCommunicatorViewController.h */,
+				92D69CD51303B75100A8BBDA /* GameKitCommunicatorViewController.m */,
+				92D69CD61303B75100A8BBDA /* GameKitCommunicatorViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -103,6 +114,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				92D69CC01303B2F300A8BBDA /* GameKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -158,6 +170,7 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* CS247_iPhoneViewController.xib in Resources */,
+				92D69CD81303B75100A8BBDA /* GameKitCommunicatorViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +184,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* CS247_iPhoneAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* CS247_iPhoneViewController.m in Sources */,
+				92D69CD71303B75100A8BBDA /* GameKitCommunicatorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
