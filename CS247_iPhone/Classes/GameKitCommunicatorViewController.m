@@ -127,25 +127,30 @@
 	
 	//Send how many chunks over
 	NSUInteger fiftyK = 51200;
-	NSUInteger chunkCount = (((NSUInteger)(imageData.length / fiftyK)) + ((imageData.length % fiftyK) == 0 ) ? 0 : 1))
-	NSString chunkCountStr = [NSString stringWithFormat:@"%d",chunkCount];
+	NSUInteger chunkCount = (((NSUInteger)(imageData.length / fiftyK)) + (((imageData.length % fiftyK) == 0 ) ? 0 : 1));
+	NSString *chunkCountStr = [NSString stringWithFormat:@"%d",chunkCount];
+	NSLog(@"I'm %@", chunkCountStr);
 	NSData* chunkCountData = [chunkCountStr dataUsingEncoding: NSASCIIStringEncoding];
-	[mSession sendData:[str dataUsingEncoding: NSASCIIStringEncoding] toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
+	[mSession sendData:chunkCountData toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
 	
 	// Send chunks
 	NSData *dataToSend;
 	NSRange range = {0, 0};
-	for(NSUInteger i=0;i<srcData.length;i+=fiftyK){
-		range = {i,fiftyK};
+	for(NSUInteger i=0;i<imageData.length;i+=fiftyK){
+		if (i + fiftyK <= imageData.length) {
+		range = NSMakeRange(i, fiftyK);
 		dataToSend = [imageData subdataWithRange:range];
 		[mSession sendData:dataToSend toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
+		}
 	}
 	NSUInteger remainder = (imageData.length % fiftyK);
 	if (remainder != 0){
-		range = {imageData.length - remainder,remainder};
+		range = NSMakeRange(imageData.length - remainder, remainder);
 		dataToSend = [imageData subdataWithRange:range];
 		[mSession sendData:dataToSend toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
 	}
+	
+	NSLog(@"GOT OUT");
 }
 
 - (void) receiveData:(NSData *)data fromPeer:(NSString *)peer inSession: (GKSession *)session context:(void *)context
