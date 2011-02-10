@@ -8,6 +8,8 @@
 
 #import "CS247_iPadAppDelegate.h"
 #import "CS247_iPadViewController.h"
+#import "GameKitCommunicatorViewController.h"
+
 
 @implementation CS247_iPadAppDelegate
 

@@ -121,8 +121,31 @@
 
 -(IBAction) sendData:(id)sender{
 	
-	NSString *str=@"Hello World";
+	//Encode image
+	UIImage* testimg = [UIImage imageNamed:@"stealmic.png"];
+	NSData *imageData = UIImagePNGRepresentation(testimg);
+	
+	//Send how many chunks over
+	NSUInteger fiftyK = 51200;
+	NSUInteger chunkCount = (((NSUInteger)(imageData.length / fiftyK)) + ((imageData.length % fiftyK) == 0 ) ? 0 : 1))
+	NSString chunkCountStr = [NSString stringWithFormat:@"%d",chunkCount];
+	NSData* chunkCountData = [chunkCountStr dataUsingEncoding: NSASCIIStringEncoding];
 	[mSession sendData:[str dataUsingEncoding: NSASCIIStringEncoding] toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
+	
+	// Send chunks
+	NSData *dataToSend;
+	NSRange range = {0, 0};
+	for(NSUInteger i=0;i<srcData.length;i+=fiftyK){
+		range = {i,fiftyK};
+		dataToSend = [imageData subdataWithRange:range];
+		[mSession sendData:dataToSend toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
+	}
+	NSUInteger remainder = (imageData.length % fiftyK);
+	if (remainder != 0){
+		range = {imageData.length - remainder,remainder};
+		dataToSend = [imageData subdataWithRange:range];
+		[mSession sendData:dataToSend toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
+	}
 }
 
 - (void) receiveData:(NSData *)data fromPeer:(NSString *)peer inSession: (GKSession *)session context:(void *)context

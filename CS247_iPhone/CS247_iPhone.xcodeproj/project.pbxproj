@@ -18,6 +18,7 @@
 		92D69CC11303B2F300A8BBDA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D69CC01303B2F300A8BBDA /* GameKit.framework */; };
 		92D69CD71303B75100A8BBDA /* GameKitCommunicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D69CD51303B75100A8BBDA /* GameKitCommunicatorViewController.m */; };
 		92D69CD81303B75100A8BBDA /* GameKitCommunicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D69CD61303B75100A8BBDA /* GameKitCommunicatorViewController.xib */; };
+		92D69D311303C3D100A8BBDA /* stealmic.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D69D301303C3D100A8BBDA /* stealmic.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		92D69CD41303B75100A8BBDA /* GameKitCommunicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitCommunicatorViewController.h; sourceTree = "<group>"; };
 		92D69CD51303B75100A8BBDA /* GameKitCommunicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitCommunicatorViewController.m; sourceTree = "<group>"; };
 		92D69CD61303B75100A8BBDA /* GameKitCommunicatorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameKitCommunicatorViewController.xib; sourceTree = "<group>"; };
+		92D69D301303C3D100A8BBDA /* stealmic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stealmic.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				92D69D301303C3D100A8BBDA /* stealmic.png */,
 				2899E5210DE3E06400AC0155 /* CS247_iPhoneViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* CS247_iPhone-Info.plist */,
@@ -171,6 +174,7 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* CS247_iPhoneViewController.xib in Resources */,
 				92D69CD81303B75100A8BBDA /* GameKitCommunicatorViewController.xib in Resources */,
+				92D69D311303C3D100A8BBDA /* stealmic.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 #import "CS247_iPhoneAppDelegate.h"
 #import "CS247_iPhoneViewController.h"
+#import "GameKitCommunicatorViewController.h"
 
 @implementation CS247_iPhoneAppDelegate
 
@@ -15,6 +16,7 @@
 @synthesize viewController;
 
 
+ 
 #pragma mark -
 #pragma mark Application lifecycle
 
