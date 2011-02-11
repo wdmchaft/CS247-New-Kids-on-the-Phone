@@ -11,7 +11,7 @@
 
 @implementation GameKitCommunicatorViewController
 
-@synthesize mSession;
+@synthesize mSession, data, chunks, totalChunks, spinner;
 
 
 /*
@@ -40,6 +40,10 @@
 	mPicker.delegate=self;
 	mPicker.connectionTypesMask = GKPeerPickerConnectionTypeNearby | GKPeerPickerConnectionTypeOnline;
 	mPeers=[[NSMutableArray alloc] init];
+	
+	chunks = 0;
+	spinner.hidden = TRUE;
+	data = [[NSMutableData alloc] init];
 }
 
 /*
@@ -126,15 +130,32 @@
 	[mSession sendData:[str dataUsingEncoding: NSASCIIStringEncoding] toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
 }
 
-- (void) receiveData:(NSData *)data fromPeer:(NSString *)peer inSession: (GKSession *)session context:(void *)context
+- (void) receiveData:(NSData *)receivedData fromPeer:(NSString *)peer inSession: (GKSession *)session context:(void *)context
 {
     // Read the bytes in data and perform an application-specific action.
-	
-	NSString* aStr;
-	aStr = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-	NSLog(@"Received Data from %@",peer);
-	mTextView.text=aStr;
-	
+	if (chunks == 0) {
+		NSString* chunkCountStr = [[NSString alloc] initWithData:receivedData encoding:NSASCIIStringEncoding];
+		NSUInteger chunkCount = [chunkCountStr intValue];
+		NSLog(@"Received Data from %@ #%d %@",peer, chunkCount, chunkCountStr);
+		if (chunkCount > 0) {
+			chunks = 1;
+			totalChunks = chunkCount;
+			spinner.hidden = FALSE;
+		}
+	} else {
+		NSLog(@"%d", chunks);
+		chunks++;
+		[data appendData:receivedData];
+		if (chunks == totalChunks + 1){
+			chunks = 0;
+			spinner.hidden = TRUE;
+			UIImage *receivedimg = [UIImage imageWithData:data];
+			imgView.image = receivedimg;
+		}
+	}
+
+
+    
 	
 }
 
