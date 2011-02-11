@@ -74,6 +74,10 @@
 	[mPicker show];
 }
 
+- (IBAction)takeImageClicked:(id)sender {
+	[self presentModalViewController:self.imagePicker animated:YES];
+}
+
 #pragma mark PeerPickerControllerDelegate stuff
 
 /* Notifies delegate that a connection type was chosen by the user.
@@ -121,31 +125,31 @@
 
 -(IBAction) sendData:(id)sender{
 	
-	//Encode image
-	UIImage* testimg = [UIImage imageNamed:@"stealmic.png"];
-	NSData *imageData = UIImagePNGRepresentation(testimg);
-	
-	//Send how many chunks over
-	NSUInteger fiftyK = 51200;
-	NSUInteger chunkCount = (((NSUInteger)(imageData.length / fiftyK)) + ((imageData.length % fiftyK) == 0 ) ? 0 : 1))
-	NSString chunkCountStr = [NSString stringWithFormat:@"%d",chunkCount];
-	NSData* chunkCountData = [chunkCountStr dataUsingEncoding: NSASCIIStringEncoding];
-	[mSession sendData:[str dataUsingEncoding: NSASCIIStringEncoding] toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
-	
-	// Send chunks
-	NSData *dataToSend;
-	NSRange range = {0, 0};
-	for(NSUInteger i=0;i<srcData.length;i+=fiftyK){
-		range = {i,fiftyK};
-		dataToSend = [imageData subdataWithRange:range];
-		[mSession sendData:dataToSend toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
-	}
-	NSUInteger remainder = (imageData.length % fiftyK);
-	if (remainder != 0){
-		range = {imageData.length - remainder,remainder};
-		dataToSend = [imageData subdataWithRange:range];
-		[mSession sendData:dataToSend toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
-	}
+//	//Encode image
+//	UIImage* testimg = [UIImage imageNamed:@"stealmic.png"];
+//	NSData *imageData = UIImagePNGRepresentation(testimg);
+//	
+//	//Send how many chunks over
+//	NSUInteger fiftyK = 51200;
+//	NSUInteger chunkCount = (((NSUInteger)(imageData.length / fiftyK)) + ((imageData.length % fiftyK) == 0 ) ? 0 : 1))
+//	NSString chunkCountStr = [NSString stringWithFormat:@"%d",chunkCount];
+//	NSData* chunkCountData = [chunkCountStr dataUsingEncoding: NSASCIIStringEncoding];
+//	[mSession sendData:[str dataUsingEncoding: NSASCIIStringEncoding] toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
+//	
+//	// Send chunks
+//	NSData *dataToSend;
+//	NSRange range = {0, 0};
+//	for(NSUInteger i=0;i<srcData.length;i+=fiftyK){
+//		range = {i,fiftyK};
+//		dataToSend = [imageData subdataWithRange:range];
+//		[mSession sendData:dataToSend toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
+//	}
+//	NSUInteger remainder = (imageData.length % fiftyK);
+//	if (remainder != 0){
+//		range = {imageData.length - remainder,remainder};
+//		dataToSend = [imageData subdataWithRange:range];
+//		[mSession sendData:dataToSend toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
+//	}
 }
 
 - (void) receiveData:(NSData *)data fromPeer:(NSString *)peer inSession: (GKSession *)session context:(void *)context
@@ -165,6 +169,61 @@
 - (void)peerPickerControllerDidCancel:(GKPeerPickerController *)picker{
 	
 }
+
+#pragma mark ImagePicker stuff
+
+- (UIImageView *)backgroundImageView
+{
+	if ([self.view.subviews count] && [[self.view.subviews objectAtIndex:0] isKindOfClass:[UIImageView class]]) {
+		return (UIImageView *)[self.view.subviews objectAtIndex:0];
+	} else {
+		return nil;
+	}
+}
+
+
+- (void)setBackgroundImage:(UIImage *)image
+{
+	UIImageView *backgroundImageView = self.backgroundImageView;
+	if (!backgroundImageView) {
+		backgroundImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+		[self.view insertSubview:backgroundImageView atIndex:0];
+		[backgroundImageView release];
+	}
+	backgroundImageView.image = image;
+}		
+
+- (UIImage *)backgroundImage
+{
+	return self.backgroundImageView.image;
+}
+
+
+- (UIImagePickerController *)imagePicker {
+	if (!imagePicker) {
+		imagePicker = [[UIImagePickerController alloc] init];
+		imagePicker.delegate = self;
+		if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+			imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+		} // defaults to photo library
+		CFStringRef desired = kUTTypeImage;
+		if ([[UIImagePickerController availableMediaTypesForSourceType:imagePicker.sourceType] containsObject:desired]) {
+			imagePicker.mediaTypes = [NSArray arrayWithObject:desired];
+		}
+		imagePicker.allowsEditing = YES;
+	}
+	return imagePicker;
+}
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+	UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+	if (image) {
+		self.backgroundImage = image;
+	}
+	[self dismissModalViewControllerAnimated:YES];
+}
+
 
 #pragma mark GameSessionDelegate stuff
 
