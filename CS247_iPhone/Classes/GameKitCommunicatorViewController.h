@@ -28,4 +28,6 @@
 @property (readonly) UIImagePickerController *imagePicker;
 @property (retain) UIImage *backgroundImage;
 
+- (unsigned char *)bitmapFromImage:(UIImage *)image;
+
 @end
