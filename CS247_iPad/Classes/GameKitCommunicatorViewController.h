@@ -8,6 +8,7 @@
 
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import <GameKit/GameKit.h>
 #import "TouchImageView.h"
 
@@ -19,6 +20,9 @@
 	IBOutlet UIButton *stopButton;
 	IBOutlet UIButton *playButton;
 
+	AVAudioPlayer *player;
+	AVAudioRecorder *recorder;
+	NSURL *recordURL;
 
 
 	IBOutlet UIImageView *background;

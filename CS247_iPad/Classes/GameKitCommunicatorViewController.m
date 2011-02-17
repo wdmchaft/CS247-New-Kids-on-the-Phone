@@ -69,6 +69,9 @@
 
 
 - (void)dealloc {
+	[recorder release];
+	[player	release];
+	[recordURL release];
 	[mPeers release];
     [super dealloc];
 }
@@ -174,17 +177,29 @@
 	for(TouchImageView* tview in touchViews){
 		[tview startRecording];
 	}
+	
+	NSString *cacheDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+	recordURL = [NSURL URLWithString:[cacheDirectory stringByAppendingPathComponent:@"narration.aif"]];
+	
+	if (!recorder) recorder = [[AVAudioRecorder alloc] initWithURL:recordURL settings:nil error:NULL];
+	[recorder record];
+
 	[UIView animateWithDuration:.2 animations:^{ stopButton.alpha = 1; recButton.alpha= 0;}];
 }
 -(IBAction) playButtonPressed:(id)sender{
 	for(TouchImageView* tview in touchViews){
 		[tview startPlayback];
 	}
+	if (player) [player release];
+	player = [[AVAudioPlayer alloc] initWithContentsOfURL:recordURL error:NULL];
+	[player play];
+	
 }
 -(IBAction) stopButtonPressed:(id)sender{
 	for(TouchImageView* tview in touchViews){
 		[tview stopRecording];
 	}
+	[recorder stop];
 	[UIView animateWithDuration:.5 animations:^{ recButton.alpha = 1; playButton.alpha = 1; stopButton.alpha= 0;}];
 	
 }
