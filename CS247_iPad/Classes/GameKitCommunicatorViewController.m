@@ -165,10 +165,6 @@
 			[touchImageView release];
 		}
 	}
-
-
-    
-	
 }
 
 -(IBAction) recButtonPressed:(id)sender{

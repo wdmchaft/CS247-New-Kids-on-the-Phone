@@ -12,6 +12,21 @@
 @interface TouchImageView : UIImageView {
     CGAffineTransform originalTransform;
     CFMutableDictionaryRef touchBeginPoints;
+	
+	BOOL recording;
+	NSMutableArray *animationSequence;
+	NSDictionary *initialState;
+	NSTimer *playbackTimer;
+	int animationStep;
 }
+
+@property (readonly) NSMutableArray *animationSequence;
+		   
+		   
+- (void)startRecording;
+- (void)stopRecording;
+- (NSDictionary *)dictionaryForCGAffineTransform:(CGAffineTransform)trans;
+- (CGAffineTransform)CGAffineTransformForDictionary:(NSDictionary *)transDict;
+- (NSDictionary *)initialViewState;
 
 @end

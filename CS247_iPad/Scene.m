@@ -29,19 +29,20 @@
 //	request.entity = [NSEntityDescription entityForName:@"Scene" inManagedObjectContext:context];
 //	request.predicate = [NSPredicate predicateWithFormat:@"name = %@", exerName];
 //	
-//	NSError *error = nil;
 //	Scene = [[context executeFetchRequest:request error:&error] lastObject];
 	
+
 	scene = [NSEntityDescription insertNewObjectForEntityForName:@"Scene" inManagedObjectContext:context];
 	//scene.time = [[NSDate date] timeIntervalSince1970]];
 	scene.background = bground;
 	
 	//save any changes
-	//if ([context hasChanges] && ![context save:&error])
-	//{
-//		NSLog(@"Error! %@, %@", error, [error userInfo]);
-//		abort();
-//	}
+	NSError *error = nil;
+	if ([context hasChanges] && ![context save:&error])
+	{
+		NSLog(@"Error! %@, %@", error, [error userInfo]);
+		abort();
+	}
 	return scene;
 }
 
