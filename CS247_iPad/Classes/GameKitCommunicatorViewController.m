@@ -109,8 +109,10 @@
 - (void)peerPickerController:(GKPeerPickerController *)picker didConnectPeer:(NSString *)peerID toSession:(GKSession *)session{
 	
 	NSLog(@"Connected from %@",peerID);
-	connectButton.hidden = YES;
 	background.hidden = NO;
+	background.alpha = 0;
+	[UIView animateWithDuration:1 animations:^{ background.alpha = 1; recButton.alpha = 1;connectButton.alpha= 0;} completion:^(BOOL finished) { connectButton.hidden = YES; }];
+
 	
 	// Use a retaining property to take ownership of the session.
     self.mSession = session;
@@ -169,6 +171,15 @@
 	
 }
 
+-(IBAction) recButtonPressed:(id)sender{
+	[UIView animateWithDuration:.2 animations:^{ stopButton.alpha = 1; recButton.alpha= 0;}];
+}
+-(IBAction) playButtonPressed:(id)sender{
+}
+-(IBAction) stopButtonPressed:(id)sender{
+	[UIView animateWithDuration:.5 animations:^{ recButton.alpha = 1; playButton.alpha = 1; stopButton.alpha= 0;}];
+	
+}
 /* Notifies delegate that the user cancelled the picker.
  */
 - (void)peerPickerControllerDidCancel:(GKPeerPickerController *)picker{
@@ -192,7 +203,9 @@
         case GKPeerStateDisconnected:
 		{
 			[mPeers removeObject:peerID];
-			
+			background.hidden = YES;
+			connectButton.alpha = 1;
+			connectButton.hidden = NO;
 			NSLog(@"PeerstateDISconnected");
 			break;
 		}

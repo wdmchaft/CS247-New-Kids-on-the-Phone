@@ -26,6 +26,9 @@
 		92A3BD5D130D042E0066430F /* connect.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BD5C130D042E0066430F /* connect.png */; };
 		92A3BDE4130D1F7D0066430F /* 72pxicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BDE3130D1F7D0066430F /* 72pxicon.png */; };
 		92A3BE2C130D26160066430F /* recess.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BE2B130D26160066430F /* recess.jpg */; };
+		92A3BE5C130D310B0066430F /* stopbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BE59130D310B0066430F /* stopbutton.png */; };
+		92A3BE5D130D310B0066430F /* playbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BE5A130D310B0066430F /* playbutton.png */; };
+		92A3BE5E130D310B0066430F /* recbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BE5B130D310B0066430F /* recbutton.png */; };
 		92D69CC61303B32E00A8BBDA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D69CC51303B32E00A8BBDA /* GameKit.framework */; };
 		92D69CCE1303B3C800A8BBDA /* GameKitCommunicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D69CCC1303B3C800A8BBDA /* GameKitCommunicatorViewController.m */; };
 		92D69CCF1303B3C800A8BBDA /* GameKitCommunicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D69CCD1303B3C800A8BBDA /* GameKitCommunicatorViewController.xib */; };
@@ -61,6 +64,9 @@
 		92A3BD5C130D042E0066430F /* connect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connect.png; sourceTree = "<group>"; };
 		92A3BDE3130D1F7D0066430F /* 72pxicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 72pxicon.png; sourceTree = "<group>"; };
 		92A3BE2B130D26160066430F /* recess.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = recess.jpg; sourceTree = "<group>"; };
+		92A3BE59130D310B0066430F /* stopbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stopbutton.png; sourceTree = "<group>"; };
+		92A3BE5A130D310B0066430F /* playbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playbutton.png; sourceTree = "<group>"; };
+		92A3BE5B130D310B0066430F /* recbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recbutton.png; sourceTree = "<group>"; };
 		92D69CC51303B32E00A8BBDA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		92D69CCB1303B3C800A8BBDA /* GameKitCommunicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitCommunicatorViewController.h; sourceTree = "<group>"; };
 		92D69CCC1303B3C800A8BBDA /* GameKitCommunicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitCommunicatorViewController.m; sourceTree = "<group>"; };
@@ -137,6 +143,9 @@
 				92A3BD4C130D009C0066430F /* castle.png */,
 				92A3BDE3130D1F7D0066430F /* 72pxicon.png */,
 				92A3BE2B130D26160066430F /* recess.jpg */,
+				92A3BE59130D310B0066430F /* stopbutton.png */,
+				92A3BE5A130D310B0066430F /* playbutton.png */,
+				92A3BE5B130D310B0066430F /* recbutton.png */,
 				7CDC04DC130CF50A00EA9A46 /* Scene.h */,
 				7CDC04DD130CF50A00EA9A46 /* Scene.m */,
 				7CDC04A5130CECF800EA9A46 /* Background.m */,
@@ -219,6 +228,9 @@
 				92A3BD5D130D042E0066430F /* connect.png in Resources */,
 				92A3BDE4130D1F7D0066430F /* 72pxicon.png in Resources */,
 				92A3BE2C130D26160066430F /* recess.jpg in Resources */,
+				92A3BE5C130D310B0066430F /* stopbutton.png in Resources */,
+				92A3BE5D130D310B0066430F /* playbutton.png in Resources */,
+				92A3BE5E130D310B0066430F /* recbutton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

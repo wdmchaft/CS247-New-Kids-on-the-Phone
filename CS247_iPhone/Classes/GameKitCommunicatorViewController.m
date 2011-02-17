@@ -110,9 +110,10 @@
 - (void)peerPickerController:(GKPeerPickerController *)picker didConnectPeer:(NSString *)peerID toSession:(GKSession *)session{
 	
 	NSLog(@"Connected from %@",peerID);
+	picView.alpha = 0;
 	picView.hidden = NO;
-	connectButton.hidden = YES;
-	// Use a retaining property to take ownership of the session.
+	[UIView animateWithDuration:1 animations:^{ picView.alpha = 1; connectButton.alpha= 0;} completion:^(BOOL finished) { 	connectButton.hidden = YES; }];
+	 // Use a retaining property to take ownership of the session.
     self.mSession = session;
 	// Assumes our object will also become the session's delegate.
     session.delegate = self;
