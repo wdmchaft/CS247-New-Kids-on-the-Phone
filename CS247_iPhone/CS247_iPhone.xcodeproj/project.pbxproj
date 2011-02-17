@@ -16,6 +16,14 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* CS247_iPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* CS247_iPhoneViewController.m */; };
 		7CCDBAEA1303C7CC00070734 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCDBAE91303C7CC00070734 /* MobileCoreServices.framework */; };
+		92A3BD6B130D060A0066430F /* connect.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BD6A130D060A0066430F /* connect.png */; };
+		92A3BD73130D07120066430F /* camera.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BD72130D07120066430F /* camera.jpg */; };
+		92A3BD7C130D0A480066430F /* Photographer.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BD7B130D0A480066430F /* Photographer.jpg */; };
+		92A3BD7E130D0A4E0066430F /* ipad-wi-fi.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BD7D130D0A4E0066430F /* ipad-wi-fi.png */; };
+		92A3BD86130D0B9B0066430F /* pointer-finger-md.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BD85130D0B9B0066430F /* pointer-finger-md.png */; };
+		92A3BD9C130D12300066430F /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BD99130D12300066430F /* 1.jpg */; };
+		92A3BD9D130D12300066430F /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BD9A130D12300066430F /* 2.jpg */; };
+		92A3BD9E130D12300066430F /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BD9B130D12300066430F /* 3.jpg */; };
 		92D69CC11303B2F300A8BBDA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D69CC01303B2F300A8BBDA /* GameKit.framework */; };
 		92D69CD71303B75100A8BBDA /* GameKitCommunicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D69CD51303B75100A8BBDA /* GameKitCommunicatorViewController.m */; };
 		92D69CD81303B75100A8BBDA /* GameKitCommunicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D69CD61303B75100A8BBDA /* GameKitCommunicatorViewController.xib */; };
@@ -37,6 +45,14 @@
 		32CA4F630368D1EE00C91783 /* CS247_iPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CS247_iPhone_Prefix.pch; sourceTree = "<group>"; };
 		7CCDBAE91303C7CC00070734 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* CS247_iPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CS247_iPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		92A3BD6A130D060A0066430F /* connect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connect.png; sourceTree = "<group>"; };
+		92A3BD72130D07120066430F /* camera.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = camera.jpg; sourceTree = "<group>"; };
+		92A3BD7B130D0A480066430F /* Photographer.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Photographer.jpg; sourceTree = "<group>"; };
+		92A3BD7D130D0A4E0066430F /* ipad-wi-fi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipad-wi-fi.png"; sourceTree = "<group>"; };
+		92A3BD85130D0B9B0066430F /* pointer-finger-md.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pointer-finger-md.png"; sourceTree = "<group>"; };
+		92A3BD99130D12300066430F /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		92A3BD9A130D12300066430F /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		92A3BD9B130D12300066430F /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		92D69CC01303B2F300A8BBDA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		92D69CD41303B75100A8BBDA /* GameKitCommunicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitCommunicatorViewController.h; sourceTree = "<group>"; };
 		92D69CD51303B75100A8BBDA /* GameKitCommunicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitCommunicatorViewController.m; sourceTree = "<group>"; };
@@ -108,6 +124,14 @@
 			isa = PBXGroup;
 			children = (
 				92D69D301303C3D100A8BBDA /* stealmic.png */,
+				92A3BD72130D07120066430F /* camera.jpg */,
+				92A3BD7B130D0A480066430F /* Photographer.jpg */,
+				92A3BD7D130D0A4E0066430F /* ipad-wi-fi.png */,
+				92A3BD6A130D060A0066430F /* connect.png */,
+				92A3BD85130D0B9B0066430F /* pointer-finger-md.png */,
+				92A3BD99130D12300066430F /* 1.jpg */,
+				92A3BD9A130D12300066430F /* 2.jpg */,
+				92A3BD9B130D12300066430F /* 3.jpg */,
 				2899E5210DE3E06400AC0155 /* CS247_iPhoneViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* CS247_iPhone-Info.plist */,
@@ -179,6 +203,14 @@
 				2899E5220DE3E06400AC0155 /* CS247_iPhoneViewController.xib in Resources */,
 				92D69CD81303B75100A8BBDA /* GameKitCommunicatorViewController.xib in Resources */,
 				92D69D311303C3D100A8BBDA /* stealmic.png in Resources */,
+				92A3BD6B130D060A0066430F /* connect.png in Resources */,
+				92A3BD73130D07120066430F /* camera.jpg in Resources */,
+				92A3BD7C130D0A480066430F /* Photographer.jpg in Resources */,
+				92A3BD7E130D0A4E0066430F /* ipad-wi-fi.png in Resources */,
+				92A3BD86130D0B9B0066430F /* pointer-finger-md.png in Resources */,
+				92A3BD9C130D12300066430F /* 1.jpg in Resources */,
+				92A3BD9D130D12300066430F /* 2.jpg in Resources */,
+				92A3BD9E130D12300066430F /* 3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

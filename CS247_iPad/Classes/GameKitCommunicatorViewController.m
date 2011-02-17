@@ -38,7 +38,7 @@
 	
 	mPicker=[[GKPeerPickerController alloc] init];
 	mPicker.delegate=self;
-	mPicker.connectionTypesMask = GKPeerPickerConnectionTypeNearby | GKPeerPickerConnectionTypeOnline;
+	mPicker.connectionTypesMask = GKPeerPickerConnectionTypeNearby;
 	mPeers=[[NSMutableArray alloc] init];
 	
 	chunks = 0;
@@ -99,9 +99,8 @@
 - (GKSession *)peerPickerController:(GKPeerPickerController *)picker sessionForConnectionType:(GKPeerPickerConnectionType)type{
 	
 	//UIApplication *app=[UIApplication sharedApplication];
-	NSString *txt=mTextField.text;
 	
-	GKSession* session = [[GKSession alloc] initWithSessionID:@"iPad" displayName:txt sessionMode:GKSessionModePeer];
+	GKSession* session = [[GKSession alloc] initWithSessionID:@"iPad" displayName:@"FaceStory iPad" sessionMode:GKSessionModePeer];
     [session autorelease];
     return session;
 }
@@ -111,6 +110,8 @@
 - (void)peerPickerController:(GKPeerPickerController *)picker didConnectPeer:(NSString *)peerID toSession:(GKSession *)session{
 	
 	NSLog(@"Connected from %@",peerID);
+	connectButton.hidden = YES;
+	
 	
 	// Use a retaining property to take ownership of the session.
     self.mSession = session;
@@ -122,6 +123,7 @@
     [picker dismiss];
     [picker autorelease];
 	// Start your game.
+	
 }
 
 -(IBAction) sendData:(id)sender{
@@ -138,6 +140,8 @@
 		NSUInteger chunkCount = [chunkCountStr intValue];
 		NSLog(@"Received Data from %@ #%d %@",peer, chunkCount, chunkCountStr);
 		if (chunkCount > 0) {
+			[data dealloc];
+			data = [[NSMutableData alloc] init];
 			chunks = 1;
 			totalChunks = chunkCount;
 			spinner.hidden = FALSE;
@@ -147,10 +151,17 @@
 		chunks++;
 		[data appendData:receivedData];
 		if (chunks == totalChunks + 1){
+			NSLog(@"GOT IMG!");
 			chunks = 0;
 			spinner.hidden = TRUE;
 			UIImage *receivedimg = [UIImage imageWithData:data];
-			imgView.image = receivedimg;
+			CGRect imageRect = CGRectMake(40.0, 10.0, 200, 0.0);
+			imageRect.size.height = 200 * receivedimg.size.height / receivedimg.size.width;
+			TouchImageView *touchImageView = [[TouchImageView alloc] initWithFrame:imageRect];
+			touchImageView.image = receivedimg;
+			touchImageView.center = CGPointMake(160.0, 230.0);
+			[self.view addSubview:touchImageView];
+			[touchImageView release];
 		}
 	}
 
@@ -175,9 +186,7 @@
     {
         case GKPeerStateConnected:
 		{
-			NSString *str=[NSString stringWithFormat:@"%@\n%@%@",mTextView.text,@"Connected from peer ",peerID];
-			mTextView.text= str;
-			NSLog(@"%@",str);
+			NSLog(@"Peerstateconnected");
 			[mPeers addObject:peerID];
 			break;
 		}
@@ -185,9 +194,7 @@
 		{
 			[mPeers removeObject:peerID];
 			
-			NSString *str=[NSString stringWithFormat:@"%@\n%@%@",mTextView.text,@"DisConnected from peer ",peerID];
-			mTextView.text= str;
-			NSLog(@"%@",str);
+			NSLog(@"PeerstateDISconnected");
 			break;
 		}
     }

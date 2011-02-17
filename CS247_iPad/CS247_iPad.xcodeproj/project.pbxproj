@@ -15,6 +15,10 @@
 		2899E5220DE3E06400AC0155 /* CS247_iPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* CS247_iPadViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* CS247_iPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* CS247_iPadViewController.m */; };
+		92A3BD12130CEC760066430F /* TouchImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A3BD11130CEC760066430F /* TouchImageView.m */; };
+		92A3BD15130CECB80066430F /* TouchImageView_Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A3BD14130CECB80066430F /* TouchImageView_Private.m */; };
+		92A3BD4D130D009C0066430F /* castle.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BD4C130D009C0066430F /* castle.png */; };
+		92A3BD5D130D042E0066430F /* connect.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BD5C130D042E0066430F /* connect.png */; };
 		92D69CC61303B32E00A8BBDA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D69CC51303B32E00A8BBDA /* GameKit.framework */; };
 		92D69CCE1303B3C800A8BBDA /* GameKitCommunicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D69CCC1303B3C800A8BBDA /* GameKitCommunicatorViewController.m */; };
 		92D69CCF1303B3C800A8BBDA /* GameKitCommunicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D69CCD1303B3C800A8BBDA /* GameKitCommunicatorViewController.xib */; };
@@ -34,6 +38,12 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* CS247_iPad_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CS247_iPad_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CS247_iPad-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CS247_iPad-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		92A3BD10130CEC760066430F /* TouchImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchImageView.h; sourceTree = "<group>"; };
+		92A3BD11130CEC760066430F /* TouchImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchImageView.m; sourceTree = "<group>"; };
+		92A3BD13130CECB80066430F /* TouchImageView_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchImageView_Private.h; sourceTree = "<group>"; };
+		92A3BD14130CECB80066430F /* TouchImageView_Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchImageView_Private.m; sourceTree = "<group>"; };
+		92A3BD4C130D009C0066430F /* castle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = castle.png; sourceTree = "<group>"; };
+		92A3BD5C130D042E0066430F /* connect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connect.png; sourceTree = "<group>"; };
 		92D69CC51303B32E00A8BBDA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		92D69CCB1303B3C800A8BBDA /* GameKitCommunicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitCommunicatorViewController.h; sourceTree = "<group>"; };
 		92D69CCC1303B3C800A8BBDA /* GameKitCommunicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitCommunicatorViewController.m; sourceTree = "<group>"; };
@@ -65,6 +75,8 @@
 				92D69CCB1303B3C800A8BBDA /* GameKitCommunicatorViewController.h */,
 				92D69CCC1303B3C800A8BBDA /* GameKitCommunicatorViewController.m */,
 				92D69CCD1303B3C800A8BBDA /* GameKitCommunicatorViewController.xib */,
+				92A3BD10130CEC760066430F /* TouchImageView.h */,
+				92A3BD11130CEC760066430F /* TouchImageView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -92,6 +104,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				92A3BD13130CECB80066430F /* TouchImageView_Private.h */,
+				92A3BD14130CECB80066430F /* TouchImageView_Private.m */,
 				32CA4F630368D1EE00C91783 /* CS247_iPad_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -101,6 +115,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				92A3BD5C130D042E0066430F /* connect.png */,
+				92A3BD4C130D009C0066430F /* castle.png */,
 				2899E5210DE3E06400AC0155 /* CS247_iPadViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* CS247_iPad-Info.plist */,
@@ -171,6 +187,8 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* CS247_iPadViewController.xib in Resources */,
 				92D69CCF1303B3C800A8BBDA /* GameKitCommunicatorViewController.xib in Resources */,
+				92A3BD4D130D009C0066430F /* castle.png in Resources */,
+				92A3BD5D130D042E0066430F /* connect.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +203,8 @@
 				1D3623260D0F684500981E51 /* CS247_iPadAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* CS247_iPadViewController.m in Sources */,
 				92D69CCE1303B3C800A8BBDA /* GameKitCommunicatorViewController.m in Sources */,
+				92A3BD12130CEC760066430F /* TouchImageView.m in Sources */,
+				92A3BD15130CECB80066430F /* TouchImageView_Private.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

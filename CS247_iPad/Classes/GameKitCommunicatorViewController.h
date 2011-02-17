@@ -9,13 +9,13 @@
 
 #import <UIKit/UIKit.h>
 #import <GameKit/GameKit.h>
+#import "TouchImageView.h"
 
 @interface GameKitCommunicatorViewController : UIViewController<GKPeerPickerControllerDelegate,GKSessionDelegate> {
 	GKPeerPickerController *mPicker;
 	GKSession *mSession;
-	IBOutlet UITextField *mTextField;
-	IBOutlet UITextView *mTextView;
-	IBOutlet UIImageView *imgView;
+	IBOutlet UIButton *connectButton;
+
 	IBOutlet UIActivityIndicatorView *spinner;
 	NSMutableArray *mPeers;
 	NSUInteger chunks;

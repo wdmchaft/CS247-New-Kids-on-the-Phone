@@ -13,10 +13,12 @@
 @interface GameKitCommunicatorViewController : UIViewController <GKPeerPickerControllerDelegate,GKSessionDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
 	GKPeerPickerController *mPicker;
 	GKSession *mSession;
-	IBOutlet UITextField *mTextField;
-	IBOutlet UITextView *mTextView;
+	IBOutlet UIButton *connectButton;
+	IBOutlet UIButton *pictureButton;
+	IBOutlet UIView *picView;
+
 	NSMutableArray *mPeers;
-	
+	UIImage* imageToSend;
 	UIImagePickerController *imagePicker;
 }
 
@@ -24,6 +26,7 @@
 -(IBAction) sendData:(id)sender;
 - (IBAction)takeImageClicked:(id)sender;
 @property (retain) GKSession *mSession;
+@property (retain) UIImage* imageToSend;
 
 @property (readonly) UIImagePickerController *imagePicker;
 @property (retain) UIImage *backgroundImage;
