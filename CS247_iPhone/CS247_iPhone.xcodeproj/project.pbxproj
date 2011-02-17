@@ -24,6 +24,8 @@
 		92A3BD9C130D12300066430F /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BD99130D12300066430F /* 1.jpg */; };
 		92A3BD9D130D12300066430F /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BD9A130D12300066430F /* 2.jpg */; };
 		92A3BD9E130D12300066430F /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BD9B130D12300066430F /* 3.jpg */; };
+		92A3BDE6130D1F8C0066430F /* 58pxicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BDE5130D1F8C0066430F /* 58pxicon.png */; };
+		92A3BDF6130D21D30066430F /* campng.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BDF5130D21D30066430F /* campng.png */; };
 		92D69CC11303B2F300A8BBDA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D69CC01303B2F300A8BBDA /* GameKit.framework */; };
 		92D69CD71303B75100A8BBDA /* GameKitCommunicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D69CD51303B75100A8BBDA /* GameKitCommunicatorViewController.m */; };
 		92D69CD81303B75100A8BBDA /* GameKitCommunicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D69CD61303B75100A8BBDA /* GameKitCommunicatorViewController.xib */; };
@@ -53,6 +55,8 @@
 		92A3BD99130D12300066430F /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		92A3BD9A130D12300066430F /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		92A3BD9B130D12300066430F /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		92A3BDE5130D1F8C0066430F /* 58pxicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58pxicon.png; sourceTree = "<group>"; };
+		92A3BDF5130D21D30066430F /* campng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = campng.png; sourceTree = "<group>"; };
 		92D69CC01303B2F300A8BBDA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		92D69CD41303B75100A8BBDA /* GameKitCommunicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitCommunicatorViewController.h; sourceTree = "<group>"; };
 		92D69CD51303B75100A8BBDA /* GameKitCommunicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitCommunicatorViewController.m; sourceTree = "<group>"; };
@@ -127,11 +131,13 @@
 				92A3BD72130D07120066430F /* camera.jpg */,
 				92A3BD7B130D0A480066430F /* Photographer.jpg */,
 				92A3BD7D130D0A4E0066430F /* ipad-wi-fi.png */,
+				92A3BDF5130D21D30066430F /* campng.png */,
 				92A3BD6A130D060A0066430F /* connect.png */,
 				92A3BD85130D0B9B0066430F /* pointer-finger-md.png */,
 				92A3BD99130D12300066430F /* 1.jpg */,
 				92A3BD9A130D12300066430F /* 2.jpg */,
 				92A3BD9B130D12300066430F /* 3.jpg */,
+				92A3BDE5130D1F8C0066430F /* 58pxicon.png */,
 				2899E5210DE3E06400AC0155 /* CS247_iPhoneViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* CS247_iPhone-Info.plist */,
@@ -211,6 +217,8 @@
 				92A3BD9C130D12300066430F /* 1.jpg in Resources */,
 				92A3BD9D130D12300066430F /* 2.jpg in Resources */,
 				92A3BD9E130D12300066430F /* 3.jpg in Resources */,
+				92A3BDE6130D1F8C0066430F /* 58pxicon.png in Resources */,
+				92A3BDF6130D21D30066430F /* campng.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
