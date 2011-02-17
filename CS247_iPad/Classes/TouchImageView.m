@@ -18,7 +18,9 @@
     if ([super initWithFrame:frame] == nil) {
         return nil;
     }
-
+	
+	recording = NO;
+	animationStep = 0;
     originalTransform = CGAffineTransformIdentity;
     touchBeginPoints = CFDictionaryCreateMutable(NULL, 0, NULL, NULL);
     self.userInteractionEnabled = YES;
@@ -40,7 +42,12 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     CGAffineTransform incrementalTransform = [self incrementalTransformWithTouches:[event touchesForView:self]];
-    self.transform = CGAffineTransformConcat(originalTransform, incrementalTransform);
+	CGAffineTransform newTransform = CGAffineTransformConcat(originalTransform, incrementalTransform);
+	if (recording) {
+		NSDictionary *transDict = [self dictionaryForCGAffineTransform:newTransform];
+		[self.animationSequence addObject:transDict];
+	}
+    self.transform = newTransform;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -61,6 +68,84 @@
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     [self touchesEnded:touches withEvent:event];
 }
+
+#pragma mark Action Recording Code
+
+- (void)startRecording {
+	recording = YES;
+}
+
+
+- (void)stopRecording {
+	recording = NO;
+}
+
+- (void)startPlayback {
+	self.transform = [self CGAffineTransformForDictionary:[self.animationSequence objectAtIndex:animationStep]];
+	
+	if ([self.animationSequence count] && animationStep < [self.animationSequence count]) {
+		NSTimeInterval interval = [[[self.animationSequence objectAtIndex:animationStep + 1] objectForKey:@"timestamp"] doubleValue] - 
+									[[[self.animationSequence objectAtIndex:animationStep] objectForKey:@"timestamp"] doubleValue];
+		playbackTimer = [NSTimer scheduledTimerWithTimeInterval:interval
+														 target:self
+													   selector:@selector(handleTimer:)
+													   userInfo:nil
+														repeats:YES];
+		animationStep++;
+	}
+}
+
+- (void)stopPlayback {
+	[playbackTimer invalidate];
+	animationStep = 0;
+}
+
+- (void)handleTimer:(NSTimer *)timer {
+	self.transform = [self CGAffineTransformForDictionary:[self.animationSequence objectAtIndex:animationStep]];
+	if (animationStep != [self.animationSequence count] - 1) {
+		NSTimeInterval interval = [[[self.animationSequence objectAtIndex:animationStep + 1] objectForKey:@"timestamp"] doubleValue] - 
+		[[[self.animationSequence objectAtIndex:animationStep] objectForKey:@"timestamp"] doubleValue];
+		playbackTimer = [NSTimer scheduledTimerWithTimeInterval:interval
+														 target:self
+													   selector:@selector(handleTimer:)
+													   userInfo:nil
+														repeats:YES];
+		animationStep++;
+	}
+}
+
+- (NSDictionary *)dictionaryForCGAffineTransform:(CGAffineTransform)trans {
+	NSDictionary *transformDict = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithFloat:trans.a], @"a",
+								   [NSNumber numberWithFloat:trans.b], @"b",
+								   [NSNumber numberWithFloat:trans.c], @"c",
+								   [NSNumber numberWithFloat:trans.d], @"d",
+								   [NSNumber numberWithFloat:trans.tx], @"tx",
+								   [NSNumber numberWithFloat:trans.ty], @"ty", 
+								   [NSNumber numberWithDouble:(double)[[NSDate date] timeIntervalSince1970]], @"timestamp", nil];
+	return transformDict;
+}
+
+- (CGAffineTransform)CGAffineTransformForDictionary:(NSDictionary *)transDict {
+	CGAffineTransform trans = CGAffineTransformMake([[transDict objectForKey:@"a"] floatValue], 
+													[[transDict objectForKey:@"b"] floatValue], 
+													[[transDict objectForKey:@"c"] floatValue], 
+													[[transDict objectForKey:@"d"] floatValue], 
+													[[transDict objectForKey:@"tx"] floatValue], 
+													[[transDict objectForKey:@"ty"] floatValue]);
+	return trans;
+}
+
+- (NSMutableArray *)animationSequence {
+	if (!animationSequence) {
+		animationSequence = [[NSMutableArray alloc] init];
+	}
+	return animationSequence;
+}
+
+- (NSDictionary *)initialViewState {
+	//NSDictionary *currState = [NSDictionary dictionaryWithObjectsAndKeys:@"x",@"y",
+}
+
 
 - (void)dealloc
 {

@@ -164,10 +164,6 @@
 			[touchImageView release];
 		}
 	}
-
-
-    
-	
 }
 
 /* Notifies delegate that the user cancelled the picker.
