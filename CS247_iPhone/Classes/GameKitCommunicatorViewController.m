@@ -7,6 +7,7 @@
 //
 
 #import "GameKitCommunicatorViewController.h"
+#import	<CoreGraphics/CoreGraphics.h>
 
 @implementation GameKitCommunicatorViewController
 
@@ -174,6 +175,57 @@
 	
 }
 
+#pragma mark editing image
+//
+//+ (UIImage *)applyEllipseToImage:(UIImage *)originalImage {
+//	CGImageRef originalImageCG = originalImage.CGImage;
+//	
+//	
+//	
+//}
+
+- (UIImage *)clipImage:(UIImage *)imageIn withMask:(UIImage *)maskIn atRect:(CGRect) maskRect
+{
+    CGRect rect = CGRectMake(0, 0, imageIn.size.width, imageIn.size.height);
+    CGImageRef msk = maskIn.CGImage;
+	
+    UIGraphicsBeginImageContext(imageIn.size);
+    
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    // Clear whole thing
+    CGContextClearRect(ctx, rect);
+	
+    // Create the masked clipping region
+    CGContextClipToMask(ctx, maskRect, msk);
+	
+    CGContextTranslateCTM(ctx, 0.0, rect.size.height);
+    CGContextScaleCTM(ctx, 1.0, -1.0);
+	
+    // Draw view into context
+    CGContextDrawImage(ctx, rect, imageIn.CGImage);
+    
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+	
+    return newImage;
+}
+
+//- (unsigned char *)bitmapFromImage:(UIImage *)image {
+//	
+//    //Create a bitmap for the given image.
+//    CGContextRef contex = CreateARGBBitmapContext(image.size);
+//    if (contex == NULL) {
+//        return NULL;
+//    }
+//	
+//    CGRect rect = CGRectMake(0.0f, 0.0f, image.size.width, image.size.height);
+//    CGContextDrawImage(contex, rect, image.CGImage);
+//    unsigned char *data = CGBitmapContextGetData(contex);
+//    CGContextRelease(contex);
+//    return data;
+//}
+
 #pragma mark ImagePicker stuff
 
 - (UIImageView *)backgroundImageView
@@ -214,7 +266,7 @@
 		if ([[UIImagePickerController availableMediaTypesForSourceType:imagePicker.sourceType] containsObject:desired]) {
 			imagePicker.mediaTypes = [NSArray arrayWithObject:desired];
 		}
-		imagePicker.allowsEditing = YES;
+		imagePicker.allowsEditing = NO;
 	}
 	return imagePicker;
 }
