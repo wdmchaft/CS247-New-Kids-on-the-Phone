@@ -46,13 +46,12 @@
 	data = [[NSMutableData alloc] init];
 }
 
-/*
+
  // Override to allow orientations other than the default portrait orientation.
  - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
+ return(interfaceOrientation==UIInterfaceOrientationLandscapeRight);
  }
- */
+ 
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -111,7 +110,7 @@
 	
 	NSLog(@"Connected from %@",peerID);
 	connectButton.hidden = YES;
-	
+	background.hidden = NO;
 	
 	// Use a retaining property to take ownership of the session.
     self.mSession = session;

@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="1"/>
+			<integer value="22"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -45,7 +45,7 @@
 					<object class="IBUIButton" id="398675584">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{41, 30}, {246, 225}}</string>
+						<string key="NSFrame">{{37, 32}, {246, 225}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -73,16 +73,16 @@
 							<string key="NSResourceName">connect.png</string>
 						</object>
 					</object>
-					<object class="IBUIView" id="792883306">
+					<object class="IBUIView" id="719109595">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">-2147483356</int>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBUIImageView" id="55318321">
-								<reference key="NSNextResponder" ref="792883306"/>
+							<object class="IBUIImageView" id="676194277">
+								<reference key="NSNextResponder" ref="719109595"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{125, 268}, {83, 58}}</string>
-								<reference key="NSSuperview" ref="792883306"/>
+								<reference key="NSSuperview" ref="719109595"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
@@ -90,11 +90,11 @@
 									<string key="NSResourceName">Photographer.jpg</string>
 								</object>
 							</object>
-							<object class="IBUIImageView" id="321009763">
-								<reference key="NSNextResponder" ref="792883306"/>
+							<object class="IBUIImageView" id="967545843">
+								<reference key="NSNextResponder" ref="719109595"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{242, 276}, {64, 58}}</string>
-								<reference key="NSSuperview" ref="792883306"/>
+								<reference key="NSSuperview" ref="719109595"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
@@ -102,11 +102,11 @@
 									<string key="NSResourceName">ipad-wi-fi.png</string>
 								</object>
 							</object>
-							<object class="IBUIImageView" id="559354722">
-								<reference key="NSNextResponder" ref="792883306"/>
+							<object class="IBUIImageView" id="1041075019">
+								<reference key="NSNextResponder" ref="719109595"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{28, 223}, {30, 43}}</string>
-								<reference key="NSSuperview" ref="792883306"/>
+								<string key="NSFrame">{{28, 229}, {26, 37}}</string>
+								<reference key="NSSuperview" ref="719109595"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
@@ -114,11 +114,11 @@
 									<string key="NSResourceName">1.jpg</string>
 								</object>
 							</object>
-							<object class="IBUIImageView" id="838468891">
-								<reference key="NSNextResponder" ref="792883306"/>
+							<object class="IBUIImageView" id="1023522799">
+								<reference key="NSNextResponder" ref="719109595"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{146, 229}, {26, 37}}</string>
-								<reference key="NSSuperview" ref="792883306"/>
+								<reference key="NSSuperview" ref="719109595"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
@@ -126,11 +126,11 @@
 									<string key="NSResourceName">2.jpg</string>
 								</object>
 							</object>
-							<object class="IBUIImageView" id="22790419">
-								<reference key="NSNextResponder" ref="792883306"/>
+							<object class="IBUIImageView" id="494137474">
+								<reference key="NSNextResponder" ref="719109595"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{267, 231}, {25, 37}}</string>
-								<reference key="NSSuperview" ref="792883306"/>
+								<string key="NSFrame">{{266.5, 231}, {26, 37}}</string>
+								<reference key="NSSuperview" ref="719109595"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
@@ -138,23 +138,23 @@
 									<string key="NSResourceName">3.jpg</string>
 								</object>
 							</object>
-							<object class="IBUIImageView" id="920246847">
-								<reference key="NSNextResponder" ref="792883306"/>
+							<object class="IBUIImageView" id="974082622">
+								<reference key="NSNextResponder" ref="719109595"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{11, 274}, {64, 58}}</string>
-								<reference key="NSSuperview" ref="792883306"/>
+								<reference key="NSSuperview" ref="719109595"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<object class="NSCustomResource" key="IBUIImage" id="760155525">
+								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">camera.jpg</string>
 								</object>
 							</object>
-							<object class="IBUIImageView" id="987207261">
-								<reference key="NSNextResponder" ref="792883306"/>
+							<object class="IBUIImageView" id="741899015">
+								<reference key="NSNextResponder" ref="719109595"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{11, 307}, {64, 58}}</string>
-								<reference key="NSSuperview" ref="792883306"/>
+								<reference key="NSSuperview" ref="719109595"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
@@ -163,24 +163,25 @@
 								</object>
 							</object>
 							<object class="IBUIButton" id="630215459">
-								<reference key="NSNextResponder" ref="792883306"/>
+								<reference key="NSNextResponder" ref="719109595"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{61, 0}, {192, 177}}</string>
-								<reference key="NSSuperview" ref="792883306"/>
+								<string key="NSFrame">{{64, 0}, {192, 177}}</string>
+								<reference key="NSSuperview" ref="719109595"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<reference key="IBUIFont" ref="357303532"/>
-								<int key="IBUIButtonType">1</int>
-								<string key="IBUINormalTitle">Take Picture</string>
 								<reference key="IBUIHighlightedTitleColor" ref="664854033"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+									<bytes key="NSRGB">MC4xOTYwNzg0MzE0IDAuMzA5ODAzOTIxNiAwLjUyMTU2ODYyNzUAA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="884354525"/>
-								<reference key="IBUINormalImage" ref="760155525"/>
+								<object class="NSCustomResource" key="IBUINormalImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">campng.png</string>
+								</object>
 							</object>
 						</object>
 						<string key="NSFrame">{{0, 70}, {320, 365}}</string>
@@ -255,7 +256,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">picView</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="792883306"/>
+						<reference key="destination" ref="719109595"/>
 					</object>
 					<int key="connectionID">26</int>
 				</object>
@@ -274,8 +275,8 @@
 						<reference key="object" ref="191373211"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="719109595"/>
 							<reference ref="398675584"/>
-							<reference ref="792883306"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -291,65 +292,65 @@
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
+						<int key="objectID">22</int>
+						<reference key="object" ref="719109595"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="974082622"/>
+							<reference ref="741899015"/>
+							<reference ref="1041075019"/>
+							<reference ref="676194277"/>
+							<reference ref="967545843"/>
+							<reference ref="1023522799"/>
+							<reference ref="494137474"/>
+							<reference ref="630215459"/>
+						</object>
+						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">17</int>
+						<reference key="object" ref="676194277"/>
+						<reference key="parent" ref="719109595"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">18</int>
+						<reference key="object" ref="967545843"/>
+						<reference key="parent" ref="719109595"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">25</int>
+						<reference key="object" ref="974082622"/>
+						<reference key="parent" ref="719109595"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">24</int>
+						<reference key="object" ref="741899015"/>
+						<reference key="parent" ref="719109595"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">27</int>
+						<reference key="object" ref="1041075019"/>
+						<reference key="parent" ref="719109595"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">28</int>
+						<reference key="object" ref="1023522799"/>
+						<reference key="parent" ref="719109595"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">29</int>
+						<reference key="object" ref="494137474"/>
+						<reference key="parent" ref="719109595"/>
+					</object>
+					<object class="IBObjectRecord">
 						<int key="objectID">4</int>
 						<reference key="object" ref="398675584"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">22</int>
-						<reference key="object" ref="792883306"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="920246847"/>
-							<reference ref="987207261"/>
-							<reference ref="630215459"/>
-							<reference ref="559354722"/>
-							<reference ref="55318321"/>
-							<reference ref="321009763"/>
-							<reference ref="838468891"/>
-							<reference ref="22790419"/>
-						</object>
-						<reference key="parent" ref="191373211"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">12</int>
 						<reference key="object" ref="630215459"/>
-						<reference key="parent" ref="792883306"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">17</int>
-						<reference key="object" ref="55318321"/>
-						<reference key="parent" ref="792883306"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">18</int>
-						<reference key="object" ref="321009763"/>
-						<reference key="parent" ref="792883306"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">25</int>
-						<reference key="object" ref="920246847"/>
-						<reference key="parent" ref="792883306"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">24</int>
-						<reference key="object" ref="987207261"/>
-						<reference key="parent" ref="792883306"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">27</int>
-						<reference key="object" ref="559354722"/>
-						<reference key="parent" ref="792883306"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">28</int>
-						<reference key="object" ref="838468891"/>
-						<reference key="parent" ref="792883306"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">29</int>
-						<reference key="object" ref="22790419"/>
-						<reference key="parent" ref="792883306"/>
+						<reference key="parent" ref="719109595"/>
 					</object>
 				</object>
 			</object>
@@ -386,11 +387,11 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>GameKitCommunicatorViewController</string>
 					<string>UIResponder</string>
-					<string>{{84, 493}, {320, 480}}</string>
+					<string>{{656, 493}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCiAAAw1cAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABCKAAAwy8AAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -426,7 +427,7 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCHAAAw3oAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABCFAAAw38AAA</bytes>
 					</object>
 				</object>
 			</object>
@@ -758,6 +759,7 @@
 				<string>3.jpg</string>
 				<string>Photographer.jpg</string>
 				<string>camera.jpg</string>
+				<string>campng.png</string>
 				<string>connect.png</string>
 				<string>ipad-wi-fi.png</string>
 				<string>pointer-finger-md.png</string>
@@ -769,6 +771,7 @@
 				<string>{66, 92}</string>
 				<string>{577, 379}</string>
 				<string>{350, 297}</string>
+				<string>{378, 376}</string>
 				<string>{378, 376}</string>
 				<string>{326, 341}</string>
 				<string>{210, 297}</string>

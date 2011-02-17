@@ -15,7 +15,7 @@
 	GKPeerPickerController *mPicker;
 	GKSession *mSession;
 	IBOutlet UIButton *connectButton;
-
+	IBOutlet UIImageView *background;
 	IBOutlet UIActivityIndicatorView *spinner;
 	NSMutableArray *mPeers;
 	NSUInteger chunks;
