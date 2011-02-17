@@ -24,6 +24,7 @@
 		   
 		   
 - (void)startRecording;
+- (void)startPlayback;
 - (void)stopRecording;
 - (NSDictionary *)dictionaryForCGAffineTransform:(CGAffineTransform)trans;
 - (CGAffineTransform)CGAffineTransformForDictionary:(NSDictionary *)transDict;

@@ -24,6 +24,7 @@
 	IBOutlet UIImageView *background;
 	IBOutlet UIActivityIndicatorView *spinner;
 	NSMutableArray *mPeers;
+	NSMutableArray *touchViews;
 	NSUInteger chunks;
 	NSUInteger totalChunks;
 	NSMutableData *data;

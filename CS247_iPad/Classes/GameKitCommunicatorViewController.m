@@ -40,6 +40,8 @@
 	mPicker.delegate=self;
 	mPicker.connectionTypesMask = GKPeerPickerConnectionTypeNearby;
 	mPeers=[[NSMutableArray alloc] init];
+	touchViews=[[NSMutableArray alloc] init];
+
 	
 	chunks = 0;
 	spinner.hidden = TRUE;
@@ -162,17 +164,27 @@
 			touchImageView.image = receivedimg;
 			touchImageView.center = CGPointMake(160.0, 230.0);
 			[self.view addSubview:touchImageView];
+			[touchViews addObject:touchImageView];
 			[touchImageView release];
 		}
 	}
 }
 
 -(IBAction) recButtonPressed:(id)sender{
+	for(TouchImageView* tview in touchViews){
+		[tview startRecording];
+	}
 	[UIView animateWithDuration:.2 animations:^{ stopButton.alpha = 1; recButton.alpha= 0;}];
 }
 -(IBAction) playButtonPressed:(id)sender{
+	for(TouchImageView* tview in touchViews){
+		[tview startPlayback];
+	}
 }
 -(IBAction) stopButtonPressed:(id)sender{
+	for(TouchImageView* tview in touchViews){
+		[tview stopRecording];
+	}
 	[UIView animateWithDuration:.5 animations:^{ recButton.alpha = 1; playButton.alpha = 1; stopButton.alpha= 0;}];
 	
 }

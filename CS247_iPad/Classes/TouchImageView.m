@@ -90,7 +90,7 @@
 														 target:self
 													   selector:@selector(handleTimer:)
 													   userInfo:nil
-														repeats:YES];
+														repeats:NO];
 		animationStep++;
 	}
 }
@@ -105,12 +105,15 @@
 	if (animationStep != [self.animationSequence count] - 1) {
 		NSTimeInterval interval = [[[self.animationSequence objectAtIndex:animationStep + 1] objectForKey:@"timestamp"] doubleValue] - 
 		[[[self.animationSequence objectAtIndex:animationStep] objectForKey:@"timestamp"] doubleValue];
+		NSLog(@"timer interval is %f", interval);
 		playbackTimer = [NSTimer scheduledTimerWithTimeInterval:interval
 														 target:self
 													   selector:@selector(handleTimer:)
 													   userInfo:nil
-														repeats:YES];
+														repeats:NO];
 		animationStep++;
+	} else {
+		[self stopPlayback];
 	}
 }
 
