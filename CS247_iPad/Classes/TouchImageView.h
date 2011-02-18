@@ -28,6 +28,5 @@
 - (void)stopRecording;
 - (NSDictionary *)dictionaryForCGAffineTransform:(CGAffineTransform)trans;
 - (CGAffineTransform)CGAffineTransformForDictionary:(NSDictionary *)transDict;
-- (NSDictionary *)initialViewState;
 
 @end

@@ -73,6 +73,14 @@
 
 - (void)startRecording {
 	recording = YES;
+	
+	// clear an existing recording
+	[animationSequence release];
+	animationSequence = nil;
+	
+	// save current transform
+	NSDictionary *transDict = [self dictionaryForCGAffineTransform:self.transform];
+	[self.animationSequence addObject:transDict];
 }
 
 
@@ -144,11 +152,6 @@
 	}
 	return animationSequence;
 }
-
-- (NSDictionary *)initialViewState {
-	//NSDictionary *currState = [NSDictionary dictionaryWithObjectsAndKeys:@"x",@"y",
-}
-
 
 - (void)dealloc
 {

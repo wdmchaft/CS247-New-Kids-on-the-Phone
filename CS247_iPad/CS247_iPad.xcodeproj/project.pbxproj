@@ -272,6 +272,7 @@
 				GCC_PREFIX_HEADER = CS247_iPad_Prefix.pch;
 				INFOPLIST_FILE = "CS247_iPad-Info.plist";
 				PRODUCT_NAME = CS247_iPad;
+				VALID_ARCHS = armv6;
 			};
 			name = Debug;
 		};
