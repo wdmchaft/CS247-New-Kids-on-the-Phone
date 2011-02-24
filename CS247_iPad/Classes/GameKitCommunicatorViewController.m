@@ -8,10 +8,11 @@
 
 
 #import "GameKitCommunicatorViewController.h"
+#import "TouchImageView.h"
 
 @implementation GameKitCommunicatorViewController
 
-@synthesize mSession, data, chunks, totalChunks, spinner;
+@synthesize mSession, data, chunks, totalChunks, spinner, playbackmode;
 
 
 /*
@@ -141,7 +142,7 @@
 - (void) receiveData:(NSData *)receivedData fromPeer:(NSString *)peer inSession: (GKSession *)session context:(void *)context
 {
 	// Dont exceed 20 images currently on the screen
-	if ([touchViews count] >= 20) {
+	if ([touchViews count] >= 3) {
 		return;
 	}
 	
@@ -169,6 +170,7 @@
 			CGRect imageRect = CGRectMake(40.0, 10.0, 200, 0.0);
 			imageRect.size.height = 200 * receivedimg.size.height / receivedimg.size.width;
 			TouchImageView *touchImageView = [[TouchImageView alloc] initWithFrame:imageRect];
+			touchImageView.viewController = self;
 			touchImageView.image = receivedimg;
 			touchImageView.center = CGPointMake(160.0, 230.0);
 			[self.view insertSubview:touchImageView belowSubview:recButton];
@@ -178,23 +180,57 @@
 	}
 }
 
--(IBAction) recButtonPressed:(id)sender{
-	dimView.alpha = 0.2;
-	countdownLabel.alpha = 1;
-	[UIView animateWithDuration:.2
-					 animations:^{ countdownLabel.alpha = 1;
-					 completion:^ {
-						 countdownLabel.alpha = 0;
-						 countdownLabel.text = 2;
-						 [UIView animateWithDuration:0.2 
-											   delay:0.8 
-											 options:NULL 
-										  animations:^{ countdownLabel.alpha = 1; }
-										  completion:NULL];
+
+- (void)countThree {
+	dimView.alpha = 0.8;
+	countdownLabel.alpha = 0;	
+	countdownLabel.text	= @"3";
+	[UIView animateWithDuration:.5
+					 animations:^{ countdownLabel.alpha = 1;}
+					 completion:^(BOOL finished){
+						 NSTimer *playbackTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+																				   target:self
+																				 selector:@selector(countTwo:)
+																				 userInfo:nil
+																				  repeats:NO];
 					 }
-	}];
-		
-	/*
+	 ];
+}
+
+- (void)countTwo:(NSTimer *)timer {
+	countdownLabel.alpha = 0;	
+	countdownLabel.text	= @"2";
+	[UIView animateWithDuration:.5
+					 animations:^{ countdownLabel.alpha = 1;}
+					 completion:^(BOOL finished){
+						 NSTimer *playbackTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+																				   target:self
+																				 selector:@selector(countOne:)
+																				 userInfo:nil
+																				  repeats:NO];
+					 }
+	 ];
+}
+
+- (void)countOne:(NSTimer *)timer {
+	countdownLabel.alpha = 0;	
+	countdownLabel.text	= @"1";
+	[UIView animateWithDuration:.5
+					 animations:^{ countdownLabel.alpha = 1;}
+					 completion:^(BOOL finished){
+						 NSTimer *playbackTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+																				   target:self
+																				 selector:@selector(startRecording:)
+																				 userInfo:nil
+																				  repeats:NO];
+					 }
+	 ];
+}
+
+- (void)startRecording:(NSTimer *)timer {
+	dimView.alpha = 0;
+	countdownLabel.alpha = 0;
+	
 	for(TouchImageView* tview in touchViews){
 		[tview startRecording];
 	}
@@ -206,19 +242,42 @@
 	
 	if (!recorder) recorder = [[AVAudioRecorder alloc] initWithURL:recordURL settings:nil error:NULL];
 	[recorder record];
+	
+	[UIView animateWithDuration:.2 animations:^{ stopButton.alpha = 1; recButton.alpha= 0; playButton.alpha = 0; rewindButton.alpha = 0;}];
+	
+}
 
-	[UIView animateWithDuration:.2 animations:^{ stopButton.alpha = 1; recButton.alpha= 0;}];
-	 */
+-(IBAction) recButtonPressed:(id)sender{
+	[self countThree];
 }
 
 -(IBAction) playButtonPressed:(id)sender{
+	if (playbackmode){
+		playbackmode = false;	
+		[playButton setImage:[UIImage imageNamed:@"play2.png"] forState:UIControlStateNormal];
+		for(TouchImageView* tview in touchViews){
+			[tview stopPlayback];
+		}
+		[player stop];
+		return;
+	}
+	playbackmode = true;	
+	[playButton setImage:[UIImage imageNamed:@"stop2.png"] forState:UIControlStateNormal];
+	
 	for(TouchImageView* tview in touchViews){
 		[tview startPlayback];
 	}
 	if (player) [player release];
 	player = [[AVAudioPlayer alloc] initWithContentsOfURL:recordURL error:NULL];
 	[player play];
-	
+	[UIView animateWithDuration:.5 animations:^{ recButton.alpha = 0;}];
+}
+
+
+-(void)playbackEnded {
+	self.playbackmode = false;
+    [playButton setImage:[UIImage imageNamed:@"play2.png"] forState:UIControlStateNormal];
+	[UIView animateWithDuration:.5 animations:^{ recButton.alpha = 1;}];
 }
 
 -(IBAction) stopButtonPressed:(id)sender{
@@ -226,8 +285,22 @@
 		[tview stopRecording];
 	}
 	[recorder stop];
-	[UIView animateWithDuration:.5 animations:^{ recButton.alpha = 1; playButton.alpha = 1; stopButton.alpha= 0;}];
+	[UIView animateWithDuration:.5 animations:^{ recButton.alpha = 1; playButton.alpha = 1; rewindButton.alpha = 1; stopButton.alpha= 0;}];
 	
+}
+
+- (IBAction) rewindButtonPressed:(id)sender{
+	if (playbackmode){
+		playbackmode = false;	
+		[playButton setImage:[UIImage imageNamed:@"play2.png"] forState:UIControlStateNormal];
+		for(TouchImageView* tview in touchViews){
+			[tview stopPlayback];
+		}
+		[player stop];
+	}
+	for (TouchImageView* tview in touchViews){
+	  tview.transform = [tview CGAffineTransformForDictionary:[tview.animationSequence objectAtIndex:0]];	
+	}
 }
 /* Notifies delegate that the user cancelled the picker.
  */

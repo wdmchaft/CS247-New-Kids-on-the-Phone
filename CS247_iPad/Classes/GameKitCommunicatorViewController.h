@@ -22,7 +22,7 @@
 	IBOutlet UIView *dimView;
 	IBOutlet UILabel *countdownLabel;
 	
-	BOOL playbackmode;
+	bool playbackmode;
 
 	AVAudioPlayer *player;
 	AVAudioRecorder *recorder;
@@ -40,15 +40,24 @@
 
 -(IBAction) connectClicked:(id)sender;
 -(IBAction) recButtonPressed:(id)sender;
+-(IBAction) rewindButtonPressed:(id)sender;
 -(IBAction) playButtonPressed:(id)sender;
 -(IBAction) stopButtonPressed:(id)sender;
 -(IBAction) sendData:(id)sender;
+
+-(void)playbackEnded;
+-(void)startRecording:(NSTimer *)timer;
+-(void)countThree;
+-(void)countTwo:(NSTimer *)timer;
+-(void)countOne:(NSTimer *)timer;
+
 @property (retain) GKSession *mSession;
 @property bool playbackmode;
 @property (retain) NSMutableData *data;
 @property NSUInteger chunks;
 @property NSUInteger totalChunks;
 @property (retain) UIActivityIndicatorView *spinner;
+
 
 
 @end
