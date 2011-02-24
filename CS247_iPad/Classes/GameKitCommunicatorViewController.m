@@ -8,10 +8,11 @@
 
 
 #import "GameKitCommunicatorViewController.h"
+#import "TouchImageView.h"
 
 @implementation GameKitCommunicatorViewController
 
-@synthesize mSession, data, chunks, totalChunks, spinner;
+@synthesize mSession, data, chunks, totalChunks, spinner, playbackmode;
 
 
 /*
@@ -164,6 +165,7 @@
 			CGRect imageRect = CGRectMake(40.0, 10.0, 200, 0.0);
 			imageRect.size.height = 200 * receivedimg.size.height / receivedimg.size.width;
 			TouchImageView *touchImageView = [[TouchImageView alloc] initWithFrame:imageRect];
+			touchImageView.viewController = self;
 			touchImageView.image = receivedimg;
 			touchImageView.center = CGPointMake(160.0, 230.0);
 			[self.view addSubview:touchImageView];
@@ -189,20 +191,37 @@
 	[UIView animateWithDuration:.2 animations:^{ stopButton.alpha = 1; recButton.alpha= 0;}];
 }
 -(IBAction) playButtonPressed:(id)sender{
+	if (playbackmode){
+		playbackmode = false;	
+		playButton.imageView.image = [UIImage imageNamed:@"play2.png"];
+		for(TouchImageView* tview in touchViews){
+			[tview stopPlayback];
+		}
+		[player stop];
+		return;
+	}
+	playbackmode = true;	
+	playButton.imageView.image = [UIImage imageNamed:@"stop2.png"];
+
 	for(TouchImageView* tview in touchViews){
 		[tview startPlayback];
 	}
+	
 	if (player) [player release];
 	player = [[AVAudioPlayer alloc] initWithContentsOfURL:recordURL error:NULL];
 	[player play];
 	
+}
+
+-(void)playbackEnded {
+	self.playbackmode = false;
 }
 -(IBAction) stopButtonPressed:(id)sender{
 	for(TouchImageView* tview in touchViews){
 		[tview stopRecording];
 	}
 	[recorder stop];
-	[UIView animateWithDuration:.5 animations:^{ recButton.alpha = 1; playButton.alpha = 1; stopButton.alpha= 0;}];
+	[UIView animateWithDuration:.5 animations:^{ recButton.alpha = 1; playButton.alpha = 1; rewindButton.alpha = 1; stopButton.alpha= 0;}];
 	
 }
 /* Notifies delegate that the user cancelled the picker.

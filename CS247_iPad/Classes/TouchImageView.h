@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "GameKitCommunicatorViewController.h"
 
 @interface TouchImageView : UIImageView {
     CGAffineTransform originalTransform;
     CFMutableDictionaryRef touchBeginPoints;
-	
+	GameKitCommunicatorViewController *viewController;
 	BOOL recording;
 	NSMutableArray *animationSequence;
 	NSDictionary *initialState;
@@ -21,10 +21,12 @@
 }
 
 @property (readonly) NSMutableArray *animationSequence;
-		   
+@property (nonatomic, retain)   	GameKitCommunicatorViewController *viewController;
+
 		   
 - (void)startRecording;
 - (void)startPlayback;
+- (void)stopPlayback;
 - (void)stopRecording;
 - (NSDictionary *)dictionaryForCGAffineTransform:(CGAffineTransform)trans;
 - (CGAffineTransform)CGAffineTransformForDictionary:(NSDictionary *)transDict;
