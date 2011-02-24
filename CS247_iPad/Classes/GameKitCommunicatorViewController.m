@@ -188,12 +188,12 @@
 	if (!recorder) recorder = [[AVAudioRecorder alloc] initWithURL:recordURL settings:nil error:NULL];
 	[recorder record];
 
-	[UIView animateWithDuration:.2 animations:^{ stopButton.alpha = 1; recButton.alpha= 0;}];
+	[UIView animateWithDuration:.2 animations:^{ stopButton.alpha = 1; recButton.alpha= 0; playButton.alpha = 0; rewindButton.alpha = 0;}];
 }
 -(IBAction) playButtonPressed:(id)sender{
 	if (playbackmode){
 		playbackmode = false;	
-		playButton.imageView.image = [UIImage imageNamed:@"play2.png"];
+		[playButton setImage:[UIImage imageNamed:@"play2.png"] forState:UIControlStateNormal];
 		for(TouchImageView* tview in touchViews){
 			[tview stopPlayback];
 		}
@@ -201,7 +201,7 @@
 		return;
 	}
 	playbackmode = true;	
-	playButton.imageView.image = [UIImage imageNamed:@"stop2.png"];
+	[playButton setImage:[UIImage imageNamed:@"stop2.png"] forState:UIControlStateNormal];
 
 	for(TouchImageView* tview in touchViews){
 		[tview startPlayback];
@@ -210,11 +210,14 @@
 	if (player) [player release];
 	player = [[AVAudioPlayer alloc] initWithContentsOfURL:recordURL error:NULL];
 	[player play];
+	[UIView animateWithDuration:.5 animations:^{ recButton.alpha = 0;}];
 	
 }
 
 -(void)playbackEnded {
 	self.playbackmode = false;
+    [playButton setImage:[UIImage imageNamed:@"play2.png"] forState:UIControlStateNormal];
+	[UIView animateWithDuration:.5 animations:^{ recButton.alpha = 1;}];
 }
 -(IBAction) stopButtonPressed:(id)sender{
 	for(TouchImageView* tview in touchViews){
@@ -223,6 +226,20 @@
 	[recorder stop];
 	[UIView animateWithDuration:.5 animations:^{ recButton.alpha = 1; playButton.alpha = 1; rewindButton.alpha = 1; stopButton.alpha= 0;}];
 	
+}
+
+- (IBAction) rewindButtonPressed:(id)sender{
+	if (playbackmode){
+		playbackmode = false;	
+		[playButton setImage:[UIImage imageNamed:@"play2.png"] forState:UIControlStateNormal];
+		for(TouchImageView* tview in touchViews){
+			[tview stopPlayback];
+		}
+		[player stop];
+	}
+	for (TouchImageView* tview in touchViews){
+	  tview.transform = [tview CGAffineTransformForDictionary:[tview.animationSequence objectAtIndex:0]];	
+	}
 }
 /* Notifies delegate that the user cancelled the picker.
  */
