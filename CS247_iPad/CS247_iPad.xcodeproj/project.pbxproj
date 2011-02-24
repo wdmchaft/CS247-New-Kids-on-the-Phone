@@ -265,6 +265,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -272,6 +273,7 @@
 				GCC_PREFIX_HEADER = CS247_iPad_Prefix.pch;
 				INFOPLIST_FILE = "CS247_iPad-Info.plist";
 				PRODUCT_NAME = CS247_iPad;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = armv6;
 			};
 			name = Debug;

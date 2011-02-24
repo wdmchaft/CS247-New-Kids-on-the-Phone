@@ -140,6 +140,11 @@
 
 - (void) receiveData:(NSData *)receivedData fromPeer:(NSString *)peer inSession: (GKSession *)session context:(void *)context
 {
+	// Dont exceed 20 images currently on the screen
+	if ([touchViews count] >= 20) {
+		return;
+	}
+	
     // Read the bytes in data and perform an application-specific action.
 	if (chunks == 0) {
 		NSString* chunkCountStr = [[NSString alloc] initWithData:receivedData encoding:NSASCIIStringEncoding];
@@ -166,7 +171,7 @@
 			TouchImageView *touchImageView = [[TouchImageView alloc] initWithFrame:imageRect];
 			touchImageView.image = receivedimg;
 			touchImageView.center = CGPointMake(160.0, 230.0);
-			[self.view addSubview:touchImageView];
+			[self.view insertSubview:touchImageView belowSubview:recButton];
 			[touchViews addObject:touchImageView];
 			[touchImageView release];
 		}
@@ -174,6 +179,14 @@
 }
 
 -(IBAction) recButtonPressed:(id)sender{
+	UIView *dimView = [UIView initWithFrame:self.view.frame];
+	dimView.alpha = 0.2;
+	[self.view addSubview:dimView];
+	UI
+	
+	
+	[UIView animateWithDuration:
+	
 	for(TouchImageView* tview in touchViews){
 		[tview startRecording];
 	}
@@ -188,6 +201,7 @@
 
 	[UIView animateWithDuration:.2 animations:^{ stopButton.alpha = 1; recButton.alpha= 0;}];
 }
+
 -(IBAction) playButtonPressed:(id)sender{
 	for(TouchImageView* tview in touchViews){
 		[tview startPlayback];
@@ -197,6 +211,7 @@
 	[player play];
 	
 }
+
 -(IBAction) stopButtonPressed:(id)sender{
 	for(TouchImageView* tview in touchViews){
 		[tview stopRecording];
