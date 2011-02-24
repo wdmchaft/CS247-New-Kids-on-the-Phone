@@ -179,13 +179,22 @@
 }
 
 -(IBAction) recButtonPressed:(id)sender{
-	UIView *dimView = [UIView initWithFrame:self.view.frame];
 	dimView.alpha = 0.2;
-	[self.view addSubview:dimView];
-	
-	
-	[UIView animateWithDuration:
-	
+	countdownLabel.alpha = 1;
+	[UIView animateWithDuration:.2
+					 animations:^{ countdownLabel.alpha = 1;
+					 completion:^ {
+						 countdownLabel.alpha = 0;
+						 countdownLabel.text = 2;
+						 [UIView animateWithDuration:0.2 
+											   delay:0.8 
+											 options:NULL 
+										  animations:^{ countdownLabel.alpha = 1; }
+										  completion:NULL];
+					 }
+	}];
+		
+	/*
 	for(TouchImageView* tview in touchViews){
 		[tview startRecording];
 	}
@@ -199,6 +208,7 @@
 	[recorder record];
 
 	[UIView animateWithDuration:.2 animations:^{ stopButton.alpha = 1; recButton.alpha= 0;}];
+	 */
 }
 
 -(IBAction) playButtonPressed:(id)sender{

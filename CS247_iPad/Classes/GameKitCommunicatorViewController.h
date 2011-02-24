@@ -19,7 +19,10 @@
 	IBOutlet UIButton *stopButton;
 	IBOutlet UIButton *playButton;
 	IBOutlet UIButton *rewindButton;
-	bool playbackmode;
+	IBOutlet UIView *dimView;
+	IBOutlet UILabel *countdownLabel;
+	
+	BOOL playbackmode;
 
 	AVAudioPlayer *player;
 	AVAudioRecorder *recorder;
