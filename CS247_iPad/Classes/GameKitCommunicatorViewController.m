@@ -182,7 +182,6 @@
 	UIView *dimView = [UIView initWithFrame:self.view.frame];
 	dimView.alpha = 0.2;
 	[self.view addSubview:dimView];
-	UI
 	
 	
 	[UIView animateWithDuration:

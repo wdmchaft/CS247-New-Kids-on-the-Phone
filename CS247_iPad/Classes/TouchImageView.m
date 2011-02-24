@@ -13,6 +13,8 @@
 
 @implementation TouchImageView
 
+@synthesize viewController;
+
 - (id)initWithFrame:(CGRect)frame
 {
     if ([super initWithFrame:frame] == nil) {
@@ -122,6 +124,7 @@
 		animationStep++;
 	} else {
 		[self stopPlayback];
+		[viewController playbackEnded];
 	}
 }
 

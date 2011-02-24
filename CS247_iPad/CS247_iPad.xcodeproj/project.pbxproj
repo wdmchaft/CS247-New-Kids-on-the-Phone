@@ -33,6 +33,12 @@
 		92D69CC61303B32E00A8BBDA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D69CC51303B32E00A8BBDA /* GameKit.framework */; };
 		92D69CCE1303B3C800A8BBDA /* GameKitCommunicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D69CCC1303B3C800A8BBDA /* GameKitCommunicatorViewController.m */; };
 		92D69CCF1303B3C800A8BBDA /* GameKitCommunicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D69CCD1303B3C800A8BBDA /* GameKitCommunicatorViewController.xib */; };
+		92F02D1E13161E7600D34CD8 /* stop2.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F02D1D13161E7600D34CD8 /* stop2.png */; };
+		92F02D2013161E7E00D34CD8 /* record2.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F02D1F13161E7E00D34CD8 /* record2.png */; };
+		92F02D2313161F2600D34CD8 /* stop3.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F02D2213161F2600D34CD8 /* stop3.png */; };
+		92F02D2713161FE800D34CD8 /* music.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F02D2413161FE800D34CD8 /* music.png */; };
+		92F02D2813161FE800D34CD8 /* play2.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F02D2513161FE800D34CD8 /* play2.png */; };
+		92F02D2913161FE800D34CD8 /* rewind.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F02D2613161FE800D34CD8 /* rewind.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +79,12 @@
 		92D69CCB1303B3C800A8BBDA /* GameKitCommunicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitCommunicatorViewController.h; sourceTree = "<group>"; };
 		92D69CCC1303B3C800A8BBDA /* GameKitCommunicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitCommunicatorViewController.m; sourceTree = "<group>"; };
 		92D69CCD1303B3C800A8BBDA /* GameKitCommunicatorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameKitCommunicatorViewController.xib; sourceTree = "<group>"; };
+		92F02D1D13161E7600D34CD8 /* stop2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop2.png; sourceTree = "<group>"; };
+		92F02D1F13161E7E00D34CD8 /* record2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record2.png; sourceTree = "<group>"; };
+		92F02D2213161F2600D34CD8 /* stop3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop3.png; sourceTree = "<group>"; };
+		92F02D2413161FE800D34CD8 /* music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music.png; sourceTree = "<group>"; };
+		92F02D2513161FE800D34CD8 /* play2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play2.png; sourceTree = "<group>"; };
+		92F02D2613161FE800D34CD8 /* rewind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rewind.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +158,13 @@
 				92A3BD5C130D042E0066430F /* connect.png */,
 				92A3BD4C130D009C0066430F /* castle.png */,
 				92A3BDE3130D1F7D0066430F /* 72pxicon.png */,
+				92F02D2213161F2600D34CD8 /* stop3.png */,
 				92A3BE2B130D26160066430F /* recess.jpg */,
+				92F02D1D13161E7600D34CD8 /* stop2.png */,
+				92F02D1F13161E7E00D34CD8 /* record2.png */,
+				92F02D2413161FE800D34CD8 /* music.png */,
+				92F02D2513161FE800D34CD8 /* play2.png */,
+				92F02D2613161FE800D34CD8 /* rewind.png */,
 				92A3BE59130D310B0066430F /* stopbutton.png */,
 				92A3BE5A130D310B0066430F /* playbutton.png */,
 				92A3BE5B130D310B0066430F /* recbutton.png */,
@@ -235,6 +253,12 @@
 				92A3BE5C130D310B0066430F /* stopbutton.png in Resources */,
 				92A3BE5D130D310B0066430F /* playbutton.png in Resources */,
 				92A3BE5E130D310B0066430F /* recbutton.png in Resources */,
+				92F02D1E13161E7600D34CD8 /* stop2.png in Resources */,
+				92F02D2013161E7E00D34CD8 /* record2.png in Resources */,
+				92F02D2313161F2600D34CD8 /* stop3.png in Resources */,
+				92F02D2713161FE800D34CD8 /* music.png in Resources */,
+				92F02D2813161FE800D34CD8 /* play2.png in Resources */,
+				92F02D2913161FE800D34CD8 /* rewind.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

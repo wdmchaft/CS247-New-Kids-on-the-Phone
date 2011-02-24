@@ -115,7 +115,7 @@
 						<reference key="IBUINormalTitleShadowColor" ref="857039404"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">recbutton.png</string>
+							<string key="NSResourceName">record2.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="297299900">
@@ -137,13 +137,13 @@
 						<reference key="IBUINormalTitleShadowColor" ref="857039404"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">stopbutton.png</string>
+							<string key="NSResourceName">stop2.png</string>
 						</object>
 					</object>
-					<object class="IBUIButton" id="346438240">
+					<object class="IBUIButton" id="300025349">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{5, 3}, {99, 96}}</string>
+						<string key="NSFrame">{{6, 8}, {99, 96}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<float key="IBUIAlpha">0.0</float>
@@ -159,7 +159,29 @@
 						<reference key="IBUINormalTitleShadowColor" ref="857039404"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">playbutton.png</string>
+							<string key="NSResourceName">rewind.png</string>
+						</object>
+					</object>
+					<object class="IBUIButton" id="346438240">
+						<reference key="NSNextResponder" ref="766721923"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{92, 8}, {99, 96}}</string>
+						<reference key="NSSuperview" ref="766721923"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<float key="IBUIAlpha">0.0</float>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIFont" ref="47314509"/>
+						<reference key="IBUIHighlightedTitleColor" ref="38729457"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="857039404"/>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">play2.png</string>
 						</object>
 					</object>
 				</object>
@@ -277,6 +299,14 @@
 					</object>
 					<int key="connectionID">34</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">rewindButton</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="300025349"/>
+					</object>
+					<int key="connectionID">36</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -308,6 +338,7 @@
 							<reference ref="40421157"/>
 							<reference ref="905027451"/>
 							<reference ref="297299900"/>
+							<reference ref="300025349"/>
 							<reference ref="346438240"/>
 						</object>
 						<reference key="parent" ref="0"/>
@@ -342,6 +373,11 @@
 						<reference key="object" ref="346438240"/>
 						<reference key="parent" ref="766721923"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">35</int>
+						<reference key="object" ref="300025349"/>
+						<reference key="parent" ref="766721923"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -362,6 +398,8 @@
 					<string>27.IBViewBoundsToFrameTransform</string>
 					<string>28.IBPluginDependency</string>
 					<string>28.IBViewBoundsToFrameTransform</string>
+					<string>35.IBPluginDependency</string>
+					<string>35.IBViewBoundsToFrameTransform</string>
 					<string>4.IBPluginDependency</string>
 					<string>4.IBViewBoundsToFrameTransform</string>
 				</object>
@@ -373,7 +411,7 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABDtYAAwy8AAA</bytes>
 					</object>
-					<string>{{673, 140}, {1024, 768}}</string>
+					<string>{{838, 140}, {1024, 768}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -389,7 +427,11 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABEYsAAwswAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABC7gAAwsIAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABBIAAAwsIAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -413,7 +455,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">34</int>
+			<int key="maxID">36</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -482,12 +524,14 @@
 							<string>connectButton</string>
 							<string>playButton</string>
 							<string>recButton</string>
+							<string>rewindButton</string>
 							<string>spinner</string>
 							<string>stopButton</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIImageView</string>
+							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
@@ -503,6 +547,7 @@
 							<string>connectButton</string>
 							<string>playButton</string>
 							<string>recButton</string>
+							<string>rewindButton</string>
 							<string>spinner</string>
 							<string>stopButton</string>
 						</object>
@@ -522,6 +567,10 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">recButton</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">rewindButton</string>
 								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
@@ -765,17 +814,19 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>castle.png</string>
 				<string>connect.png</string>
-				<string>playbutton.png</string>
-				<string>recbutton.png</string>
-				<string>stopbutton.png</string>
+				<string>play2.png</string>
+				<string>record2.png</string>
+				<string>rewind.png</string>
+				<string>stop2.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{1209, 747}</string>
 				<string>{378, 376}</string>
-				<string>{250, 250}</string>
 				<string>{512, 512}</string>
-				<string>{256, 256}</string>
+				<string>{512, 512}</string>
+				<string>{512, 512}</string>
+				<string>{512, 512}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">132</string>

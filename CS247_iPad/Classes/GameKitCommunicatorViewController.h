@@ -10,7 +10,6 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <GameKit/GameKit.h>
-#import "TouchImageView.h"
 
 @interface GameKitCommunicatorViewController : UIViewController<GKPeerPickerControllerDelegate,GKSessionDelegate> {
 	GKPeerPickerController *mPicker;
@@ -19,6 +18,8 @@
 	IBOutlet UIButton *recButton;
 	IBOutlet UIButton *stopButton;
 	IBOutlet UIButton *playButton;
+	IBOutlet UIButton *rewindButton;
+	bool playbackmode;
 
 	AVAudioPlayer *player;
 	AVAudioRecorder *recorder;
@@ -40,6 +41,7 @@
 -(IBAction) stopButtonPressed:(id)sender;
 -(IBAction) sendData:(id)sender;
 @property (retain) GKSession *mSession;
+@property bool playbackmode;
 @property (retain) NSMutableData *data;
 @property NSUInteger chunks;
 @property NSUInteger totalChunks;
