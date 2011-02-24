@@ -19,6 +19,9 @@
 	IBOutlet UIButton *stopButton;
 	IBOutlet UIButton *playButton;
 	IBOutlet UIButton *rewindButton;
+	IBOutlet UIView *dimView;
+	IBOutlet UILabel *countdownLabel;
+	
 	bool playbackmode;
 
 	AVAudioPlayer *player;
@@ -41,12 +44,20 @@
 -(IBAction) playButtonPressed:(id)sender;
 -(IBAction) stopButtonPressed:(id)sender;
 -(IBAction) sendData:(id)sender;
+
+-(void)playbackEnded;
+-(void)startRecording:(NSTimer *)timer;
+-(void)countThree;
+-(void)countTwo:(NSTimer *)timer;
+-(void)countOne:(NSTimer *)timer;
+
 @property (retain) GKSession *mSession;
 @property bool playbackmode;
 @property (retain) NSMutableData *data;
 @property NSUInteger chunks;
 @property NSUInteger totalChunks;
 @property (retain) UIActivityIndicatorView *spinner;
+
 
 
 @end

@@ -141,6 +141,11 @@
 
 - (void) receiveData:(NSData *)receivedData fromPeer:(NSString *)peer inSession: (GKSession *)session context:(void *)context
 {
+	// Dont exceed 20 images currently on the screen
+	if ([touchViews count] >= 3) {
+		return;
+	}
+	
     // Read the bytes in data and perform an application-specific action.
 	if (chunks == 0) {
 		NSString* chunkCountStr = [[NSString alloc] initWithData:receivedData encoding:NSASCIIStringEncoding];
@@ -168,7 +173,7 @@
 			touchImageView.viewController = self;
 			touchImageView.image = receivedimg;
 			touchImageView.center = CGPointMake(160.0, 230.0);
-			[self.view addSubview:touchImageView];
+			[self.view insertSubview:touchImageView belowSubview:recButton];
 			[touchViews addObject:touchImageView];
 			[touchImageView release];
 		}
@@ -178,7 +183,57 @@
 	[touchViews removeObjectIdenticalTo:imgview];
 }
 
--(IBAction) recButtonPressed:(id)sender{
+
+- (void)countThree {
+	dimView.alpha = 0.8;
+	countdownLabel.alpha = 0;	
+	countdownLabel.text	= @"3";
+	[UIView animateWithDuration:.5
+					 animations:^{ countdownLabel.alpha = 1;}
+					 completion:^(BOOL finished){
+						 NSTimer *playbackTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+																				   target:self
+																				 selector:@selector(countTwo:)
+																				 userInfo:nil
+																				  repeats:NO];
+					 }
+	 ];
+}
+
+- (void)countTwo:(NSTimer *)timer {
+	countdownLabel.alpha = 0;	
+	countdownLabel.text	= @"2";
+	[UIView animateWithDuration:.5
+					 animations:^{ countdownLabel.alpha = 1;}
+					 completion:^(BOOL finished){
+						 NSTimer *playbackTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+																				   target:self
+																				 selector:@selector(countOne:)
+																				 userInfo:nil
+																				  repeats:NO];
+					 }
+	 ];
+}
+
+- (void)countOne:(NSTimer *)timer {
+	countdownLabel.alpha = 0;	
+	countdownLabel.text	= @"1";
+	[UIView animateWithDuration:.5
+					 animations:^{ countdownLabel.alpha = 1;}
+					 completion:^(BOOL finished){
+						 NSTimer *playbackTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+																				   target:self
+																				 selector:@selector(startRecording:)
+																				 userInfo:nil
+																				  repeats:NO];
+					 }
+	 ];
+}
+
+- (void)startRecording:(NSTimer *)timer {
+	dimView.alpha = 0;
+	countdownLabel.alpha = 0;
+	
 	for(TouchImageView* tview in touchViews){
 		[tview startRecording];
 	}
@@ -190,9 +245,15 @@
 	
 	if (!recorder) recorder = [[AVAudioRecorder alloc] initWithURL:recordURL settings:nil error:NULL];
 	[recorder record];
-
+	
 	[UIView animateWithDuration:.2 animations:^{ stopButton.alpha = 1; recButton.alpha= 0; playButton.alpha = 0; rewindButton.alpha = 0;}];
+	
 }
+
+-(IBAction) recButtonPressed:(id)sender{
+	[self countThree];
+}
+
 -(IBAction) playButtonPressed:(id)sender{
 	if (playbackmode){
 		playbackmode = false;	
@@ -205,23 +266,23 @@
 	}
 	playbackmode = true;	
 	[playButton setImage:[UIImage imageNamed:@"stop2.png"] forState:UIControlStateNormal];
-
+	
 	for(TouchImageView* tview in touchViews){
 		[tview startPlayback];
 	}
-	
 	if (player) [player release];
 	player = [[AVAudioPlayer alloc] initWithContentsOfURL:recordURL error:NULL];
 	[player play];
 	[UIView animateWithDuration:.5 animations:^{ recButton.alpha = 0;}];
-	
 }
+
 
 -(void)playbackEnded {
 	self.playbackmode = false;
     [playButton setImage:[UIImage imageNamed:@"play2.png"] forState:UIControlStateNormal];
 	[UIView animateWithDuration:.5 animations:^{ recButton.alpha = 1;}];
 }
+
 -(IBAction) stopButtonPressed:(id)sender{
 	for(TouchImageView* tview in touchViews){
 		[tview stopRecording];
