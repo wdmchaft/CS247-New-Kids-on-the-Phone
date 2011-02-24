@@ -101,7 +101,7 @@
 	//UIApplication *app=[UIApplication sharedApplication];
 	
 	GKSession* session = [[GKSession alloc] initWithSessionID:@"iPad" displayName:@"FaceStory iPhone" sessionMode:GKSessionModePeer];
-    [session autorelease];
+   // [session autorelease];
     return session;
 }
 
@@ -157,7 +157,7 @@
 		dataToSend = [imageData subdataWithRange:range];
 		[mSession sendData:dataToSend toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
 	}
-	
+	    
 	NSLog(@"GOT OUT");
 }
 
@@ -281,6 +281,8 @@
 	}
 	[self sendData:self];
 	[self dismissModalViewControllerAnimated:YES];
+    picView.hidden = NO;
+	connectButton.hidden = YES;
 }
 
 
@@ -289,7 +291,7 @@
 /* Indicates a state change for the given peer.
  */
 - (void)session:(GKSession *)session peer:(NSString *)peerID didChangeState:(GKPeerConnectionState)state{
-	
+	NSLog(@"STATE CHANGED");
 	switch (state)
     {
         case GKPeerStateConnected:

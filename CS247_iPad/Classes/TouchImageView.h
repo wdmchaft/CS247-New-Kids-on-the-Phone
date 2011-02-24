@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GameKitCommunicatorViewController.h"
 
-@interface TouchImageView : UIImageView {
+@interface TouchImageView : UIImageView <UIGestureRecognizerDelegate> {
     CGAffineTransform originalTransform;
     CFMutableDictionaryRef touchBeginPoints;
 	GameKitCommunicatorViewController *viewController;
@@ -18,11 +18,14 @@
 	NSDictionary *initialState;
 	NSTimer *playbackTimer;
 	int animationStep;
+	BOOL poppedup;
+	UIPopoverController* pop;
 }
 
 @property (readonly) NSMutableArray *animationSequence;
 @property (nonatomic, retain)   	GameKitCommunicatorViewController *viewController;
-
+@property (nonatomic,retain) 	UIPopoverController* pop;
+@property BOOL poppedup;
 		   
 - (void)startRecording;
 - (void)startPlayback;

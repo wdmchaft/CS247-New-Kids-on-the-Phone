@@ -174,6 +174,9 @@
 		}
 	}
 }
+-(void)removeImg:(id)imgview{
+	[touchViews removeObjectIdenticalTo:imgview];
+}
 
 -(IBAction) recButtonPressed:(id)sender{
 	for(TouchImageView* tview in touchViews){

@@ -13,7 +13,7 @@
 
 @implementation TouchImageView
 
-@synthesize viewController;
+@synthesize viewController, poppedup, pop;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -28,11 +28,46 @@
     self.userInteractionEnabled = YES;
     self.multipleTouchEnabled = YES;
     self.exclusiveTouch = NO;
-
+	UILongPressGestureRecognizer* gest = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture)];
+	[self addGestureRecognizer:gest];
+	self.poppedup = NO;
     return self;
 }
+- (void)handleGesture{
+	if(!self.poppedup){
+		
+	CGRect contentRect = CGRectMake(0, 0, 200, 40);
+	UIButton *source = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	[source addTarget:self action:@selector(remove) forControlEvents:UIControlEventAllEvents];
+	source.frame = contentRect;
+    [source setTitle:@"Delete" forState:UIControlStateNormal];
+	source.titleLabel.textColor = [UIColor redColor];
+	
+	UIViewController* popoverContent = [[UIViewController alloc] init];
+	popoverContent.view = source;
+	
+	popoverContent.contentSizeForViewInPopover = contentRect.size;
+	
+	UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:popoverContent];
+	self.pop = popoverController;
+	[popoverController presentPopoverFromRect:[self frame]
+									   inView:self.superview
+					 permittedArrowDirections:UIPopoverArrowDirectionAny
+									 animated:YES];
+	
+	[popoverContent release];	
+	poppedup = YES;	
+	}
+}
 
+-(void) remove {
+	[self.pop dismissPopoverAnimated:NO]; 
+	[self.viewController removeImg:self];
+	[self retain];
+	[self removeFromSuperview];
+}
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	self.poppedup = NO;
     NSMutableSet *currentTouches = [[[event touchesForView:self] mutableCopy] autorelease];
     [currentTouches minusSet:touches];
     if ([currentTouches count] > 0) {
