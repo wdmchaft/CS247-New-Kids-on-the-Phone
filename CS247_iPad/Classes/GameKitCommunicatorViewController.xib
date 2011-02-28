@@ -93,7 +93,7 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">castle.png</string>
+							<string key="NSResourceName">ocean_bg.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="905027451">
@@ -493,7 +493,7 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABDtYAAwy8AAA</bytes>
 					</object>
-					<string>{{281, 1045}, {1024, 768}}</string>
+					<string>{{281, 268}, {1024, 768}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -928,8 +928,8 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>castle.png</string>
 				<string>connect.png</string>
+				<string>ocean_bg.png</string>
 				<string>play2.png</string>
 				<string>record2.png</string>
 				<string>rewind.png</string>
@@ -937,8 +937,8 @@
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{1209, 747}</string>
 				<string>{378, 376}</string>
+				<string>{1877, 1408}</string>
 				<string>{512, 512}</string>
 				<string>{512, 512}</string>
 				<string>{512, 512}</string>
