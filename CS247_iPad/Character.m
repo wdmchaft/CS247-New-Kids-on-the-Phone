@@ -7,80 +7,28 @@
 //
 
 #import "Character.h"
-
+#import <UIKit/UIKit.h>
 
 @implementation Character 
+@dynamic image, name, time, defaultSize, animation, scene;
 
-- (NSNumber *)defaultSize 
-{
-    NSNumber * tmpValue;
-    
-    [self willAccessValueForKey:@"defaultSize"];
-    tmpValue = [self primitiveValueForKey:@"defaultSize"];
-    [self didAccessValueForKey:@"defaultSize"];
-    
-    return tmpValue;
-}
-
-- (void)setDefaultSize:(NSNumber *)value 
-{
-    [self willChangeValueForKey:@"defaultSize"];
-    [self setPrimitiveValue:value forKey:@"defaultSize"];
-    [self didChangeValueForKey:@"defaultSize"];
-}
-
-- (NSData *)image 
-{
-    NSData * tmpValue;
-    
-    [self willAccessValueForKey:@"image"];
-    tmpValue = [self primitiveValueForKey:@"image"];
-    [self didAccessValueForKey:@"image"];
-    
-    return tmpValue;
-}
-
-- (void)setImage:(NSData *)value 
-{
-    [self willChangeValueForKey:@"image"];
-    [self setPrimitiveValue:value forKey:@"image"];
-    [self didChangeValueForKey:@"image"];
-}
-
-- (NSString *)name 
-{
-    NSString * tmpValue;
-    
-    [self willAccessValueForKey:@"name"];
-    tmpValue = [self primitiveValueForKey:@"name"];
-    [self didAccessValueForKey:@"name"];
-    
-    return tmpValue;
-}
-
-- (void)setName:(NSString *)value 
-{
-    [self willChangeValueForKey:@"name"];
-    [self setPrimitiveValue:value forKey:@"name"];
-    [self didChangeValueForKey:@"name"];
-}
-
-- (NSNumber *)time 
-{
-    NSNumber * tmpValue;
-    
-    [self willAccessValueForKey:@"time"];
-    tmpValue = [self primitiveValueForKey:@"time"];
-    [self didAccessValueForKey:@"time"];
-    
-    return tmpValue;
-}
-
-- (void)setTime:(NSNumber *)value 
-{
-    [self willChangeValueForKey:@"time"];
-    [self setPrimitiveValue:value forKey:@"time"];
-    [self didChangeValueForKey:@"time"];
++ (Character *)characterForTouchImageView:(TouchImageView *)tiv inScene:(Scene *)sceneObj inManagedObjectContext:(NSManagedObjectContext *)context {
+	Character *character = [NSEntityDescription insertNewObjectForEntityForName:@"Character" inManagedObjectContext:context];
+	character.scene = sceneObj;
+	character.name = @"";
+	character.image = UIImagePNGRepresentation(tiv.image);
+	character.animation = [NSKeyedArchiver archivedDataWithRootObject:tiv.animationSequence];
+	character.time = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
+	
+	//save any changes
+	NSError *error = nil;
+	if ([context hasChanges] && ![context save:&error])
+	{
+		NSLog(@"Error! %@, %@", error, [error userInfo]);
+		abort();
+	}
+	return character;
+	
 }
 
 @end

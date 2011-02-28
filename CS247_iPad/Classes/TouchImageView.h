@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "GameKitCommunicatorViewController.h"
 
+@class Character;
+
 @interface TouchImageView : UIImageView <UIGestureRecognizerDelegate> {
     CGAffineTransform originalTransform;
     CFMutableDictionaryRef touchBeginPoints;
@@ -33,5 +35,7 @@
 - (void)stopRecording;
 - (NSDictionary *)dictionaryForCGAffineTransform:(CGAffineTransform)trans;
 - (CGAffineTransform)CGAffineTransformForDictionary:(NSDictionary *)transDict;
+
+- (id)initWithCharacter:(Character *)character;
 
 @end

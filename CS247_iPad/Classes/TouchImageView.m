@@ -10,10 +10,25 @@
 #import "TouchImageView_Private.h"
 #include <execinfo.h>
 #include <stdio.h>
+#import "Character.h"
 
 @implementation TouchImageView
 
 @synthesize viewController, poppedup, pop;
+
+- (id)initWithCharacter:(Character *)character {
+	UIImage *img = [UIImage imageWithData:character.image];
+	CGRect imageRect = CGRectMake(40.0, 10.0, 200, 0.0);
+	imageRect.size.height = 200 * img.size.height / img.size.width;
+	self = [[TouchImageView alloc] initWithFrame:imageRect];
+	if (self) {
+		self.image = img;
+		self.center = CGPointMake(160.0, 230.0);
+		animationSequence = (NSMutableArray *)[NSKeyedUnarchiver unarchiveObjectWithData:character.animation];
+		[animationSequence retain];
+	}
+	return self;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {

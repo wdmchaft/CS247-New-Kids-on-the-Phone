@@ -7,22 +7,20 @@
 //
 
 #import <CoreData/CoreData.h>
-
+#import "TouchImageView.h"
+#import "Scene.h"
 
 @interface Character :  NSManagedObject  
 {
 }
 
-- (NSNumber *)defaultSize;
-- (void)setDefaultSize:(NSNumber *)value;
+@property (nonatomic, retain) NSData *animation;
+@property (nonatomic, retain) NSNumber *defaultSize;
+@property (nonatomic, retain) NSData *image;
+@property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSNumber *time;
+@property (nonatomic, retain) NSManagedObject *scene;
 
-- (NSData *)image;
-- (void)setImage:(NSData *)value;
-
-- (NSString *)name;
-- (void)setName:(NSString *)value;
-
-- (NSNumber *)time;
-- (void)setTime:(NSNumber *)value;
++ (Character *)characterForTouchImageView:(TouchImageView *)tiv inScene:(Scene *)sceneObj inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

@@ -22,6 +22,10 @@
 @property (nonatomic, retain) NSSet* characters;
 @property (nonatomic, retain) Background * background;
 
+
++ (Scene *)sceneInManagedObjectContext:(NSManagedObjectContext *)context;
++ (Scene *)sceneWithBackground:(Background *)bground inManagedObjectContext:(NSManagedObjectContext *)context;
+
 @end
 
 

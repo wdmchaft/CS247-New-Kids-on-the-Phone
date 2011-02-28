@@ -9,10 +9,12 @@
 
 #import "GameKitCommunicatorViewController.h"
 #import "TouchImageView.h"
+#import "Character.h"
+#import "Scene.h"
 
 @implementation GameKitCommunicatorViewController
 
-@synthesize mSession, data, chunks, totalChunks, spinner, playbackmode;
+@synthesize mSession, data, chunks, totalChunks, spinner, playbackmode, managedObjectContext;
 
 
 /*
@@ -141,8 +143,8 @@
 
 - (void) receiveData:(NSData *)receivedData fromPeer:(NSString *)peer inSession: (GKSession *)session context:(void *)context
 {
-	// Dont exceed 20 images currently on the screen
-	if ([touchViews count] >= 3) {
+	// Dont exceed 10 images currently on the screen
+	if ([touchViews count] >= 10) {
 		return;
 	}
 	
@@ -183,6 +185,7 @@
 	[touchViews removeObjectIdenticalTo:imgview];
 }
 
+#pragma mark Animations
 
 - (void)countThree {
 	dimView.alpha = 0.8;
@@ -230,6 +233,8 @@
 	 ];
 }
 
+#pragma mark UI methods
+
 - (void)startRecording:(NSTimer *)timer {
 	dimView.alpha = 0;
 	countdownLabel.alpha = 0;
@@ -257,7 +262,7 @@
 -(IBAction) playButtonPressed:(id)sender{
 	if (playbackmode){
 		playbackmode = false;	
-		[playButton setImage:[UIImage imageNamed:@"play2.png"] forState:UIControlStateNormal];
+		[playButton setImage:[UIImage imageNamed:@"play-active.png"] forState:UIControlStateNormal];
 		for(TouchImageView* tview in touchViews){
 			[tview stopPlayback];
 		}
@@ -265,7 +270,7 @@
 		return;
 	}
 	playbackmode = true;	
-	[playButton setImage:[UIImage imageNamed:@"stop2.png"] forState:UIControlStateNormal];
+	[playButton setImage:[UIImage imageNamed:@"stop-active.png"] forState:UIControlStateNormal];
 	
 	for(TouchImageView* tview in touchViews){
 		[tview startPlayback];
@@ -279,7 +284,7 @@
 
 -(void)playbackEnded {
 	self.playbackmode = false;
-    [playButton setImage:[UIImage imageNamed:@"play2.png"] forState:UIControlStateNormal];
+    [playButton setImage:[UIImage imageNamed:@"play-active.png"] forState:UIControlStateNormal];
 	[UIView animateWithDuration:.5 animations:^{ recButton.alpha = 1;}];
 }
 
@@ -295,7 +300,7 @@
 - (IBAction) rewindButtonPressed:(id)sender{
 	if (playbackmode){
 		playbackmode = false;	
-		[playButton setImage:[UIImage imageNamed:@"play2.png"] forState:UIControlStateNormal];
+		[playButton setImage:[UIImage imageNamed:@"play-active.png"] forState:UIControlStateNormal];
 		for(TouchImageView* tview in touchViews){
 			[tview stopPlayback];
 		}
@@ -305,13 +310,61 @@
 	  tview.transform = [tview CGAffineTransformForDictionary:[tview.animationSequence objectAtIndex:0]];	
 	}
 }
+
+- (IBAction)saveRecording {
+	Scene *scene = [Scene sceneInManagedObjectContext:managedObjectContext];
+	for (TouchImageView *touchView in touchViews) {
+		Character *character = [Character characterForTouchImageView:touchView inScene:scene inManagedObjectContext:managedObjectContext];
+	}
+	NSLog(@"successfully saved scene");
+}
+
+- (IBAction)loadRecording {
+	
+	NSError *error = nil;
+	
+	// get a scene
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	request.entity = [NSEntityDescription entityForName:@"Scene" inManagedObjectContext:managedObjectContext];	
+	Scene *scene = [[managedObjectContext executeFetchRequest:request error:&error] lastObject];
+	[request release];
+	
+	// get the characters in the scene
+	request = [[NSFetchRequest alloc] init];
+	request.entity = [NSEntityDescription entityForName:@"Character" inManagedObjectContext:managedObjectContext];
+	request.predicate = [NSPredicate predicateWithFormat:@"scene = %@", scene];
+	request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"time"
+																					 ascending:YES]];
+	request.fetchBatchSize = 20;
+	
+	NSFetchedResultsController *frc = [[NSFetchedResultsController alloc]
+									   initWithFetchRequest:request
+									   managedObjectContext:managedObjectContext
+									   sectionNameKeyPath:nil
+									   cacheName:nil];
+	[request release];
+	
+	BOOL success = [frc performFetch:&error];
+	if (success) {
+		for (int i = 0; i < [frc.fetchedObjects count]; i++) {
+			Character *character = [frc.fetchedObjects objectAtIndex:i];
+			TouchImageView *tiv = [[TouchImageView alloc] initWithCharacter:character];
+			tiv.viewController = self;
+			[self.view insertSubview:tiv belowSubview:recButton];
+			[touchViews addObject:tiv];
+		}
+	}
+	
+	[UIView animateWithDuration:.2 animations:^{recButton.alpha = 1; playButton.alpha = 1; rewindButton.alpha = 1;}];
+}
+
+#pragma mark GameSessionDelegate stuff
+
 /* Notifies delegate that the user cancelled the picker.
  */
 - (void)peerPickerControllerDidCancel:(GKPeerPickerController *)picker{
 	
 }
-
-#pragma mark GameSessionDelegate stuff
 
 /* Indicates a state change for the given peer.
  */

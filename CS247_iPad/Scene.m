@@ -21,7 +21,7 @@
 @dynamic background;
 
 
-+ (Scene *)SceneWithBackground:(Background *)bground inManagedObjectContext:(NSManagedObjectContext *)context {
++ (Scene *)sceneWithBackground:(Background *)bground inManagedObjectContext:(NSManagedObjectContext *)context {
 	Scene *scene = nil;
 	
 	
@@ -33,8 +33,33 @@
 	
 
 	scene = [NSEntityDescription insertNewObjectForEntityForName:@"Scene" inManagedObjectContext:context];
-	//scene.time = [[NSDate date] timeIntervalSince1970]];
+	scene.time = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
 	scene.background = bground;
+	
+	//save any changes
+	NSError *error = nil;
+	if ([context hasChanges] && ![context save:&error])
+	{
+		NSLog(@"Error! %@, %@", error, [error userInfo]);
+		abort();
+	}
+	return scene;
+}
+
++ (Scene *)sceneInManagedObjectContext:(NSManagedObjectContext *)context {
+	Scene *scene = nil;
+	
+	
+	//	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	//	request.entity = [NSEntityDescription entityForName:@"Scene" inManagedObjectContext:context];
+	//	request.predicate = [NSPredicate predicateWithFormat:@"name = %@", exerName];
+	//	
+	//	Scene = [[context executeFetchRequest:request error:&error] lastObject];
+	
+	
+	scene = [NSEntityDescription insertNewObjectForEntityForName:@"Scene" inManagedObjectContext:context];
+	scene.time = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
+	scene.name = @"";
 	
 	//save any changes
 	NSError *error = nil;

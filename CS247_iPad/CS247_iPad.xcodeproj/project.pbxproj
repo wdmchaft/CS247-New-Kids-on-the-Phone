@@ -16,8 +16,13 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* CS247_iPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* CS247_iPadViewController.m */; };
 		7C8746B9130D3E46009064D6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8746B8130D3E46009064D6 /* AVFoundation.framework */; };
+		7CC3E392131C1F610022EC11 /* CS247_iPad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3E390131C1F610022EC11 /* CS247_iPad.xcdatamodeld */; };
+		7CCEEB8B131B7FA4004EAD52 /* play-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CCEEB8A131B7FA4004EAD52 /* play-active.png */; };
+		7CCEEB8D131B7FB2004EAD52 /* rewind-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CCEEB8C131B7FB2004EAD52 /* rewind-active.png */; };
+		7CCEEB8F131B7FB9004EAD52 /* record-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CCEEB8E131B7FB9004EAD52 /* record-active.png */; };
+		7CCEEB91131B7FDE004EAD52 /* stop-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CCEEB90131B7FDE004EAD52 /* stop-active.png */; };
+		7CCEEB99131B888A004EAD52 /* trashcan.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CCEEB98131B888A004EAD52 /* trashcan.png */; };
 		7CDC042F130CE3B400EA9A46 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDC042E130CE3B400EA9A46 /* CoreData.framework */; };
-		7CDC046C130CE3EF00EA9A46 /* CS247_iPad.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 7CDC046B130CE3EF00EA9A46 /* CS247_iPad.xcdatamodel */; };
 		7CDC04AB130CECF800EA9A46 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDC04A5130CECF800EA9A46 /* Background.m */; };
 		7CDC04AC130CECF800EA9A46 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDC04A7130CECF800EA9A46 /* Character.m */; };
 		7CDC04DE130CF50A00EA9A46 /* Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDC04DD130CF50A00EA9A46 /* Scene.m */; };
@@ -56,8 +61,13 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* CS247_iPad_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CS247_iPad_Prefix.pch; sourceTree = "<group>"; };
 		7C8746B8130D3E46009064D6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		7CC3E391131C1F610022EC11 /* CS247_iPad.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = CS247_iPad.xcdatamodel; sourceTree = "<group>"; };
+		7CCEEB8A131B7FA4004EAD52 /* play-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-active.png"; sourceTree = "<group>"; };
+		7CCEEB8C131B7FB2004EAD52 /* rewind-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rewind-active.png"; sourceTree = "<group>"; };
+		7CCEEB8E131B7FB9004EAD52 /* record-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record-active.png"; sourceTree = "<group>"; };
+		7CCEEB90131B7FDE004EAD52 /* stop-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-active.png"; sourceTree = "<group>"; };
+		7CCEEB98131B888A004EAD52 /* trashcan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trashcan.png; sourceTree = "<group>"; };
 		7CDC042E130CE3B400EA9A46 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		7CDC046B130CE3EF00EA9A46 /* CS247_iPad.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = CS247_iPad.xcdatamodel; sourceTree = "<group>"; };
 		7CDC04A5130CECF800EA9A46 /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
 		7CDC04A6130CECF800EA9A46 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
 		7CDC04A7130CECF800EA9A46 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
@@ -146,6 +156,12 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				7CDC04DC130CF50A00EA9A46 /* Scene.h */,
+				7CDC04DD130CF50A00EA9A46 /* Scene.m */,
+				7CDC04A5130CECF800EA9A46 /* Background.m */,
+				7CDC04A6130CECF800EA9A46 /* Background.h */,
+				7CDC04A8130CECF800EA9A46 /* Character.h */,
+				7CDC04A7130CECF800EA9A46 /* Character.m */,
 				92A3BD13130CECB80066430F /* TouchImageView_Private.h */,
 				92A3BD14130CECB80066430F /* TouchImageView_Private.m */,
 				32CA4F630368D1EE00C91783 /* CS247_iPad_Prefix.pch */,
@@ -157,6 +173,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7CCEEB98131B888A004EAD52 /* trashcan.png */,
+				7CCEEB8E131B7FB9004EAD52 /* record-active.png */,
+				7CCEEB90131B7FDE004EAD52 /* stop-active.png */,
+				7CCEEB8C131B7FB2004EAD52 /* rewind-active.png */,
+				7CCEEB8A131B7FA4004EAD52 /* play-active.png */,
 				92A3BD5C130D042E0066430F /* connect.png */,
 				92A3BD4C130D009C0066430F /* castle.png */,
 				92A3BDE3130D1F7D0066430F /* 72pxicon.png */,
@@ -171,13 +192,7 @@
 				92A3BE59130D310B0066430F /* stopbutton.png */,
 				92A3BE5A130D310B0066430F /* playbutton.png */,
 				92A3BE5B130D310B0066430F /* recbutton.png */,
-				7CDC04DC130CF50A00EA9A46 /* Scene.h */,
-				7CDC04DD130CF50A00EA9A46 /* Scene.m */,
-				7CDC04A5130CECF800EA9A46 /* Background.m */,
-				7CDC04A6130CECF800EA9A46 /* Background.h */,
-				7CDC04A7130CECF800EA9A46 /* Character.m */,
-				7CDC04A8130CECF800EA9A46 /* Character.h */,
-				7CDC046B130CE3EF00EA9A46 /* CS247_iPad.xcdatamodel */,
+				7CC3E390131C1F610022EC11 /* CS247_iPad.xcdatamodeld */,
 				2899E5210DE3E06400AC0155 /* CS247_iPadViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* CS247_iPad-Info.plist */,
@@ -263,6 +278,11 @@
 				92F02D2813161FE800D34CD8 /* play2.png in Resources */,
 				92F02D2913161FE800D34CD8 /* rewind.png in Resources */,
 				92F02E0813165E8900D34CD8 /* ocean_bg.png in Resources */,
+				7CCEEB8B131B7FA4004EAD52 /* play-active.png in Resources */,
+				7CCEEB8D131B7FB2004EAD52 /* rewind-active.png in Resources */,
+				7CCEEB8F131B7FB9004EAD52 /* record-active.png in Resources */,
+				7CCEEB91131B7FDE004EAD52 /* stop-active.png in Resources */,
+				7CCEEB99131B888A004EAD52 /* trashcan.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,10 +299,10 @@
 				92D69CCE1303B3C800A8BBDA /* GameKitCommunicatorViewController.m in Sources */,
 				92A3BD12130CEC760066430F /* TouchImageView.m in Sources */,
 				92A3BD15130CECB80066430F /* TouchImageView_Private.m in Sources */,
-				7CDC046C130CE3EF00EA9A46 /* CS247_iPad.xcdatamodel in Sources */,
 				7CDC04AB130CECF800EA9A46 /* Background.m in Sources */,
 				7CDC04AC130CECF800EA9A46 /* Character.m in Sources */,
 				7CDC04DE130CF50A00EA9A46 /* Scene.m in Sources */,
+				7CC3E392131C1F610022EC11 /* CS247_iPad.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +389,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7CC3E390131C1F610022EC11 /* CS247_iPad.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7CC3E391131C1F610022EC11 /* CS247_iPad.xcdatamodel */,
+			);
+			currentVersion = 7CC3E391131C1F610022EC11 /* CS247_iPad.xcdatamodel */;
+			path = CS247_iPad.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
 }

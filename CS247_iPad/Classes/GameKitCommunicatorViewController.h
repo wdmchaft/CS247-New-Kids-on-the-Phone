@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <GameKit/GameKit.h>
+#import <CoreData/CoreData.h>
 
 @interface GameKitCommunicatorViewController : UIViewController<GKPeerPickerControllerDelegate,GKSessionDelegate> {
 	GKPeerPickerController *mPicker;
@@ -36,6 +37,8 @@
 	NSUInteger chunks;
 	NSUInteger totalChunks;
 	NSMutableData *data;
+	
+	NSManagedObjectContext *managedObjectContext;
 }
 
 -(IBAction) connectClicked:(id)sender;
@@ -44,6 +47,8 @@
 -(IBAction) playButtonPressed:(id)sender;
 -(IBAction) stopButtonPressed:(id)sender;
 -(IBAction) sendData:(id)sender;
+-(IBAction) saveRecording;
+-(IBAction)loadRecording;
 
 -(void)playbackEnded;
 -(void)startRecording:(NSTimer *)timer;
@@ -58,6 +63,7 @@
 @property NSUInteger totalChunks;
 @property (retain) UIActivityIndicatorView *spinner;
 
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 
 @end
