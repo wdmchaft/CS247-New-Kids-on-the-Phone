@@ -24,6 +24,7 @@
 	IBOutlet UILabel *countdownLabel;
 	
 	bool playbackmode;
+	bool recordmode;
 
 	AVAudioPlayer *player;
 	AVAudioRecorder *recorder;

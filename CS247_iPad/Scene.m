@@ -15,7 +15,7 @@
 
 @dynamic time;
 @dynamic animation;
-@dynamic audioFile;
+@dynamic audio;
 @dynamic name;
 @dynamic characters;
 @dynamic background;
@@ -48,14 +48,12 @@
 
 + (Scene *)sceneInManagedObjectContext:(NSManagedObjectContext *)context {
 	Scene *scene = nil;
-	
-	
-	//	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-	//	request.entity = [NSEntityDescription entityForName:@"Scene" inManagedObjectContext:context];
-	//	request.predicate = [NSPredicate predicateWithFormat:@"name = %@", exerName];
-	//	
-	//	Scene = [[context executeFetchRequest:request error:&error] lastObject];
-	
+
+	// get the narration.aif sound file
+	NSString *cacheDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+	NSURL *soundURL = [NSURL URLWithString:[cacheDirectory stringByAppendingPathComponent:@"narration.aif"]];
+	NSData *soundData = [NSData dataWithContentsOfURL:soundURL];
+	scene.audio = soundData;
 	
 	scene = [NSEntityDescription insertNewObjectForEntityForName:@"Scene" inManagedObjectContext:context];
 	scene.time = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];

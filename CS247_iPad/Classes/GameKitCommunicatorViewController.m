@@ -148,6 +148,8 @@
 		return;
 	}
 	
+
+	
     // Read the bytes in data and perform an application-specific action.
 	if (chunks == 0) {
 		NSString* chunkCountStr = [[NSString alloc] initWithData:receivedData encoding:NSASCIIStringEncoding];
@@ -168,6 +170,10 @@
 			NSLog(@"GOT IMG!");
 			chunks = 0;
 			spinner.hidden = TRUE;
+			// Can't add pics when recording
+			if (recordmode) {
+				return;
+			}
 			UIImage *receivedimg = [UIImage imageWithData:data];
 			CGRect imageRect = CGRectMake(40.0, 10.0, 200, 0.0);
 			imageRect.size.height = 200 * receivedimg.size.height / receivedimg.size.width;
@@ -236,6 +242,8 @@
 #pragma mark UI methods
 
 - (void)startRecording:(NSTimer *)timer {
+	recordmode = true;
+	
 	dimView.alpha = 0;
 	countdownLabel.alpha = 0;
 	
@@ -289,6 +297,7 @@
 }
 
 -(IBAction) stopButtonPressed:(id)sender{
+	recordmode = false;
 	for(TouchImageView* tview in touchViews){
 		[tview stopRecording];
 	}
@@ -312,6 +321,8 @@
 }
 
 - (IBAction)saveRecording {
+	return;
+	
 	Scene *scene = [Scene sceneInManagedObjectContext:managedObjectContext];
 	for (TouchImageView *touchView in touchViews) {
 		Character *character = [Character characterForTouchImageView:touchView inScene:scene inManagedObjectContext:managedObjectContext];
@@ -321,6 +332,8 @@
 
 - (IBAction)loadRecording {
 	
+	return;
+	
 	NSError *error = nil;
 	
 	// get a scene
@@ -328,6 +341,11 @@
 	request.entity = [NSEntityDescription entityForName:@"Scene" inManagedObjectContext:managedObjectContext];	
 	Scene *scene = [[managedObjectContext executeFetchRequest:request error:&error] lastObject];
 	[request release];
+	
+	// load audio from scene
+	NSString *cacheDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+	NSURL *soundURL = [NSURL URLWithString:[cacheDirectory stringByAppendingPathComponent:@"narration.aif"]];
+	[scene.audio writeToURL:soundURL atomically:YES];
 	
 	// get the characters in the scene
 	request = [[NSFetchRequest alloc] init];
