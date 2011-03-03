@@ -174,6 +174,7 @@
 			if (recordmode) {
 				return;
 			}
+			trashButton.alpha = 1;
 			UIImage *receivedimg = [UIImage imageWithData:data];
 			CGRect imageRect = CGRectMake(40.0, 10.0, 200, 0.0);
 			imageRect.size.height = 200 * receivedimg.size.height / receivedimg.size.width;
@@ -263,6 +264,9 @@
 	
 }
 
+-(IBAction) trashHit:(id)sender {
+	NSLog(@"yes");
+}
 -(IBAction) recButtonPressed:(id)sender{
 	[self countThree];
 }
