@@ -321,7 +321,6 @@
 }
 
 - (IBAction)saveRecording {
-	return;
 	
 	Scene *scene = [Scene sceneInManagedObjectContext:managedObjectContext];
 	for (TouchImageView *touchView in touchViews) {
@@ -331,8 +330,6 @@
 }
 
 - (IBAction)loadRecording {
-	
-	return;
 	
 	NSError *error = nil;
 	
