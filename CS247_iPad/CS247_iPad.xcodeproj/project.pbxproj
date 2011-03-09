@@ -36,6 +36,7 @@
 		92A3BE5C130D310B0066430F /* stopbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BE59130D310B0066430F /* stopbutton.png */; };
 		92A3BE5D130D310B0066430F /* playbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BE5A130D310B0066430F /* playbutton.png */; };
 		92A3BE5E130D310B0066430F /* recbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BE5B130D310B0066430F /* recbutton.png */; };
+		92D0AEFC131F9FE20020CA51 /* trashcan.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D0AEFB131F9FE20020CA51 /* trashcan.png */; };
 		92D69CC61303B32E00A8BBDA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D69CC51303B32E00A8BBDA /* GameKit.framework */; };
 		92D69CCE1303B3C800A8BBDA /* GameKitCommunicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D69CCC1303B3C800A8BBDA /* GameKitCommunicatorViewController.m */; };
 		92D69CCF1303B3C800A8BBDA /* GameKitCommunicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D69CCD1303B3C800A8BBDA /* GameKitCommunicatorViewController.xib */; };
@@ -88,6 +89,7 @@
 		92A3BE59130D310B0066430F /* stopbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stopbutton.png; sourceTree = "<group>"; };
 		92A3BE5A130D310B0066430F /* playbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playbutton.png; sourceTree = "<group>"; };
 		92A3BE5B130D310B0066430F /* recbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recbutton.png; sourceTree = "<group>"; };
+		92D0AEFB131F9FE20020CA51 /* trashcan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trashcan.png; sourceTree = "<group>"; };
 		92D69CC51303B32E00A8BBDA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		92D69CCB1303B3C800A8BBDA /* GameKitCommunicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitCommunicatorViewController.h; sourceTree = "<group>"; };
 		92D69CCC1303B3C800A8BBDA /* GameKitCommunicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitCommunicatorViewController.m; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				92F02D2613161FE800D34CD8 /* rewind.png */,
 				92A3BE59130D310B0066430F /* stopbutton.png */,
 				92A3BE5A130D310B0066430F /* playbutton.png */,
+				92D0AEFB131F9FE20020CA51 /* trashcan.png */,
 				92A3BE5B130D310B0066430F /* recbutton.png */,
 				7CC3E390131C1F610022EC11 /* CS247_iPad.xcdatamodeld */,
 				2899E5210DE3E06400AC0155 /* CS247_iPadViewController.xib */,

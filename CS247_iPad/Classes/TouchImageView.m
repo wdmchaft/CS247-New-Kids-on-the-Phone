@@ -93,6 +93,8 @@
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+
+	
     CGAffineTransform incrementalTransform = [self incrementalTransformWithTouches:[event touchesForView:self]];
 	CGAffineTransform newTransform = CGAffineTransformConcat(originalTransform, incrementalTransform);
 	if (recording) {
@@ -109,6 +111,16 @@
         }
     }
 
+	//Trash Check!
+	UITouch *touch = [touches anyObject];	
+    CGPoint location = [touch locationInView:self.superview];
+	NSLog(@"%f , %f " , location.x, location.y);
+	if (location.x > 942 && location.x < (947+95) && location.y > 650 && location.y < (664+104)) {
+		NSLog(@"BAM!");
+		[self.viewController removeImg:self];
+		[self removeFromSuperview];
+		return;
+	}
     [self updateOriginalTransformForTouches:[event touchesForView:self]];
     [self removeTouchesFromCache:touches];
 

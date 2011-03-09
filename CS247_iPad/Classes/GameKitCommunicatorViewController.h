@@ -20,6 +20,8 @@
 	IBOutlet UIButton *stopButton;
 	IBOutlet UIButton *playButton;
 	IBOutlet UIButton *rewindButton;
+	IBOutlet UIButton *trashButton;
+
 	IBOutlet UIView *dimView;
 	IBOutlet UILabel *countdownLabel;
 	
@@ -50,6 +52,7 @@
 -(IBAction) sendData:(id)sender;
 -(IBAction) saveRecording;
 -(IBAction)loadRecording;
+-(IBAction) trashHit:(id)sender;
 
 -(void)playbackEnded;
 -(void)startRecording:(NSTimer *)timer;
