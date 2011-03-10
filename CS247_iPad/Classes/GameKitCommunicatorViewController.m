@@ -175,6 +175,7 @@
 				return;
 			}
 			trashButton.alpha = 1;
+			NSLog(@"received bytes: %i", [data length]);
 			UIImage *receivedimg = [UIImage imageWithData:data];
 			CGRect imageRect = CGRectMake(40.0, 10.0, 200, 0.0);
 			imageRect.size.height = 200 * receivedimg.size.height / receivedimg.size.width;
@@ -327,9 +328,23 @@
 - (IBAction)saveRecording {
 	
 	Scene *scene = [Scene sceneInManagedObjectContext:managedObjectContext];
+	
+	NSMutableArray *characters = [[NSMutableArray alloc] init];
 	for (TouchImageView *touchView in touchViews) {
 		Character *character = [Character characterForTouchImageView:touchView inScene:scene inManagedObjectContext:managedObjectContext];
+		[characters addObject:character];
+		[character release];
 	}
+	
+	
+	for (Character *character in characters) {
+		TouchImageView *tiv = [[TouchImageView alloc] initWithCharacter:character];
+		tiv.viewController = self;
+		[self.view insertSubview:tiv belowSubview:recButton];
+		[touchViews addObject:tiv];
+		[tiv release];
+	}
+	
 	NSLog(@"successfully saved scene");
 }
 
@@ -368,13 +383,16 @@
 		for (int i = 0; i < [frc.fetchedObjects count]; i++) {
 			Character *character = [frc.fetchedObjects objectAtIndex:i];
 			TouchImageView *tiv = [[TouchImageView alloc] initWithCharacter:character];
+			//[character release];
 			tiv.viewController = self;
 			[self.view insertSubview:tiv belowSubview:recButton];
 			[touchViews addObject:tiv];
+			//[tiv release];
 		}
 	}
 	
-	[UIView animateWithDuration:.2 animations:^{recButton.alpha = 1; playButton.alpha = 1; rewindButton.alpha = 1;}];
+	[frc release];
+	[UIView animateWithDuration:.2 animations:^{recButton.alpha = 1; playButton.alpha = 1; rewindButton.alpha = 1; trashButton.alpha = 1;}];
 }
 
 #pragma mark GameSessionDelegate stuff

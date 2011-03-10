@@ -177,7 +177,7 @@
 	if (animationStep != [self.animationSequence count] - 1) {
 		NSTimeInterval interval = [[[self.animationSequence objectAtIndex:animationStep + 1] objectForKey:@"timestamp"] doubleValue] - 
 		[[[self.animationSequence objectAtIndex:animationStep] objectForKey:@"timestamp"] doubleValue];
-		NSLog(@"timer interval is %f", interval);
+		//NSLog(@"timer interval is %f", interval);
 		playbackTimer = [NSTimer scheduledTimerWithTimeInterval:interval
 														 target:self
 													   selector:@selector(handleTimer:)
@@ -222,6 +222,13 @@
 {
     CFRelease(touchBeginPoints);
     
+	
+	[animationSequence release];
+	[initialState release];
+	[playbackTimer release];
+	[pop release];
+	
+	
     [super dealloc];
 }
 

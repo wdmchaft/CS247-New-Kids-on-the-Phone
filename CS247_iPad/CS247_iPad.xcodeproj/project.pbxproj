@@ -36,7 +36,6 @@
 		92A3BE5C130D310B0066430F /* stopbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BE59130D310B0066430F /* stopbutton.png */; };
 		92A3BE5D130D310B0066430F /* playbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BE5A130D310B0066430F /* playbutton.png */; };
 		92A3BE5E130D310B0066430F /* recbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BE5B130D310B0066430F /* recbutton.png */; };
-		92D0AEFC131F9FE20020CA51 /* trashcan.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D0AEFB131F9FE20020CA51 /* trashcan.png */; };
 		92D69CC61303B32E00A8BBDA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D69CC51303B32E00A8BBDA /* GameKit.framework */; };
 		92D69CCE1303B3C800A8BBDA /* GameKitCommunicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D69CCC1303B3C800A8BBDA /* GameKitCommunicatorViewController.m */; };
 		92D69CCF1303B3C800A8BBDA /* GameKitCommunicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D69CCD1303B3C800A8BBDA /* GameKitCommunicatorViewController.xib */; };

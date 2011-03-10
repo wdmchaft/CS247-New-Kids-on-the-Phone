@@ -16,7 +16,14 @@
 	Character *character = [NSEntityDescription insertNewObjectForEntityForName:@"Character" inManagedObjectContext:context];
 	character.scene = sceneObj;
 	character.name = @"";
-	character.image = UIImagePNGRepresentation(tiv.image);
+	
+	// crappy workaround
+	
+	[UIImageJPEGRepresentation(tiv.image, 0.3) writeToFile:[NSString stringWithFormat:@"a.jpg"] atomically:YES];
+	UIImage *newImage = [UIImage imageWithContentsOfFile:@"a.jpg"];
+	
+	character.image = UIImageJPEGRepresentation(newImage, 0.3);
+	NSLog(@"saving bytes: %i", [character.image length]);
 	character.animation = [NSKeyedArchiver archivedDataWithRootObject:tiv.animationSequence];
 	character.time = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
 	
