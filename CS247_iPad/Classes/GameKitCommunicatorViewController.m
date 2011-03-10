@@ -11,6 +11,7 @@
 #import "TouchImageView.h"
 #import "Character.h"
 #import "Scene.h"
+#import "MainMenuViewController.h"
 
 @implementation GameKitCommunicatorViewController
 
@@ -112,6 +113,10 @@
     return session;
 }
 
+- (BOOL)acceptConnectionFromPeer:(NSString *)peerID error:(NSError **)error {
+	return YES;	
+}
+
 /* Notifies delegate that the peer was connected to a GKSession.
  */
 - (void)peerPickerController:(GKPeerPickerController *)picker didConnectPeer:(NSString *)peerID toSession:(GKSession *)session{
@@ -119,7 +124,6 @@
 	NSLog(@"Connected from %@",peerID);
 	background.hidden = NO;
 	background.alpha = 0;
-	[UIView animateWithDuration:1 animations:^{ background.alpha = 1; recButton.alpha = 1;connectButton.alpha= 0;} completion:^(BOOL finished) { connectButton.hidden = YES; }];
 
 	
 	// Use a retaining property to take ownership of the session.
@@ -132,9 +136,35 @@
     [picker dismiss];
     [picker autorelease];
 	// Start your game.
+	MainMenuViewController* menu = [[MainMenuViewController alloc] initWithNibName:@"MainMenuViewController" bundle:nil];
+	menu.gk = self;
+	[self presentModalViewController:menu animated:YES];
+	[menu release];
+	//[UIView animateWithDuration:1 animations:^{ background.alpha = 1; recButton.alpha = 1;connectButton.alpha= 0;} completion:^(BOOL finished) { connectButton.hidden = YES; }];
+
 	
 }
 
+-(void)backgroundPicked:(int) backgroundnum{
+	switch (backgroundnum) {
+		case 0:
+			background.image = [UIImage imageNamed:@"castle.png"];
+			break;
+		case 1:
+			background.image = [UIImage imageNamed:@"ocean_bg.png"];
+			break;
+		case 2:
+			background.image = [UIImage imageNamed:@"space-bg.png"];
+			break;
+		case 3:
+			background.image = [UIImage imageNamed:@"sunny-field-bg.png"];
+			break;	
+		default:
+			break;
+	}
+	[UIView animateWithDuration:1 animations:^{ background.alpha = 1; recButton.alpha = 1;connectButton.alpha= 0;} completion:^(BOOL finished) { connectButton.hidden = YES; }];
+	
+}
 -(IBAction) sendData:(id)sender{
 	
 	NSString *str=@"Hello World";
@@ -267,6 +297,12 @@
 
 -(IBAction) trashHit:(id)sender {
 	NSLog(@"yes");
+}
+-(IBAction) homeClicked:(id)sender {
+	MainMenuViewController* menu = [[MainMenuViewController alloc] initWithNibName:@"MainMenuViewController" bundle:nil];
+	menu.gk = self;
+    [self presentModalViewController:menu animated:YES];
+	[menu release];
 }
 -(IBAction) recButtonPressed:(id)sender{
 	[self countThree];

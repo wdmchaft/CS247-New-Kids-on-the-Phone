@@ -21,6 +21,8 @@
 	IBOutlet UIButton *playButton;
 	IBOutlet UIButton *rewindButton;
 	IBOutlet UIButton *trashButton;
+	IBOutlet UIButton *homeButton;
+
 
 	IBOutlet UIView *dimView;
 	IBOutlet UILabel *countdownLabel;
@@ -45,6 +47,8 @@
 }
 
 -(IBAction) connectClicked:(id)sender;
+-(IBAction) homeClicked:(id)sender;
+
 -(IBAction) recButtonPressed:(id)sender;
 -(IBAction) rewindButtonPressed:(id)sender;
 -(IBAction) playButtonPressed:(id)sender;
