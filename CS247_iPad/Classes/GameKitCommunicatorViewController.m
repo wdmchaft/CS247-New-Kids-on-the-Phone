@@ -372,7 +372,7 @@
 		[character release];
 	}
 	
-	
+	/*
 	for (Character *character in characters) {
 		TouchImageView *tiv = [[TouchImageView alloc] initWithCharacter:character];
 		tiv.viewController = self;
@@ -380,7 +380,7 @@
 		[touchViews addObject:tiv];
 		[tiv release];
 	}
-	
+	*/
 	NSLog(@"successfully saved scene");
 }
 
@@ -397,7 +397,8 @@
 	// load audio from scene
 	NSString *cacheDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
 	NSURL *soundURL = [NSURL URLWithString:[cacheDirectory stringByAppendingPathComponent:@"narration.aif"]];
-	[scene.audio writeToURL:soundURL atomically:YES];
+	NSData *audioData = [NSData dataWithContentsOfFile:scene.audioFile];
+	[audioData writeToURL:soundURL atomically:YES];
 	
 	// get the characters in the scene
 	request = [[NSFetchRequest alloc] init];

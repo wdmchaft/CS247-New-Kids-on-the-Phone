@@ -15,7 +15,7 @@
 
 @dynamic time;
 @dynamic animation;
-@dynamic audio;
+@dynamic audioFile;
 @dynamic name;
 @dynamic characters;
 @dynamic background;
@@ -49,14 +49,18 @@
 + (Scene *)sceneInManagedObjectContext:(NSManagedObjectContext *)context {
 	Scene *scene = nil;
 
+	NSString *timestring = [[NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]] stringValue];
+	NSString *filename = [NSString stringWithFormat:@"%s.aif", timestring, nil];
+	
 	// get the narration.aif sound file
 	NSString *cacheDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
 	NSURL *soundURL = [NSURL URLWithString:[cacheDirectory stringByAppendingPathComponent:@"narration.aif"]];
 	NSData *soundData = [NSData dataWithContentsOfURL:soundURL];
-	scene.audio = soundData;
+	[soundData writeToFile:filename];
+	scene.audioFile = filename;
 	
 	scene = [NSEntityDescription insertNewObjectForEntityForName:@"Scene" inManagedObjectContext:context];
-	scene.time = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
+	scene.time = timestring;
 	scene.name = @"";
 	
 	//save any changes

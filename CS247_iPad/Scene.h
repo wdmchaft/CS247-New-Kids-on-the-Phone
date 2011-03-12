@@ -15,9 +15,9 @@
 {
 }
 
-@property (nonatomic, retain) NSNumber * time;
+@property (nonatomic, retain) NSString * time;
 @property (nonatomic, retain) NSData * animation;
-@property (nonatomic, retain) NSData * audio;
+@property (nonatomic, retain) NSString * audioFile;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet* characters;
 @property (nonatomic, retain) Background * background;

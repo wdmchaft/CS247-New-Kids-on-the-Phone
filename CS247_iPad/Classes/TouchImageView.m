@@ -17,7 +17,9 @@
 @synthesize viewController, poppedup, pop;
 
 - (id)initWithCharacter:(Character *)character {
-	UIImage *img = [UIImage imageWithData:character.image];
+		
+	UIImage *img = [UIImage imageWithContentsOfFile:character.imageFile];
+	NSLog(@"img ptr: %i", img);
 	CGRect imageRect = CGRectMake(40.0, 10.0, 200, 0.0);
 	imageRect.size.height = 200 * img.size.height / img.size.width;
 	self = [[TouchImageView alloc] initWithFrame:imageRect];
@@ -225,7 +227,6 @@
 	
 	[animationSequence release];
 	[initialState release];
-	[playbackTimer release];
 	[pop release];
 	
 	
