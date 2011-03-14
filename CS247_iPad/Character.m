@@ -13,17 +13,27 @@
 @dynamic imageFile, name, time, defaultSize, animation, scene;
 
 + (Character *)characterForTouchImageView:(TouchImageView *)tiv inScene:(Scene *)sceneObj inManagedObjectContext:(NSManagedObjectContext *)context {
+	
+	NSAutoreleasePool *p = [[NSAutoreleasePool alloc] init];
+	
+	NSLog(@"tiv ptr: %i  img ptr: %i", tiv, tiv.image);
+	
 	Character *character = [NSEntityDescription insertNewObjectForEntityForName:@"Character" inManagedObjectContext:context];
 	character.scene = sceneObj;
 	character.name = @"";
-	
-	NSString *timestring = [[NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]] stringValue];
-	NSString *filename = [NSString stringWithFormat:@"%s.jpg", timestring, nil];
+
+	NSString *timestring = [NSString stringWithFormat:@"%f", ([[NSDate date] timeIntervalSince1970] * 1000000)];
+	timestring = [[timestring componentsSeparatedByString:@"."] objectAtIndex:0];
+	//NSLog(@"timestring: %@", timestring);
+	NSString *filename = [NSString stringWithFormat:@"%@.jpg", timestring, nil];
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *docPaths = [paths objectAtIndex:0];
 	NSString *savePath = [docPaths stringByAppendingPathComponent:filename];
 	
-	[UIImageJPEGRepresentation(tiv.image, 0.3) writeToFile:savePath atomically:YES];
+	NSLog(@"saving image at %@", savePath);
+	
+	NSData *imgData = UIImageJPEGRepresentation(tiv.image, 0.1);
+	[imgData writeToFile:savePath atomically:YES];
 	
 	character.imageFile = savePath;
 	//NSLog(@"saving bytes: %i", [character.imageFile length]);
@@ -37,6 +47,9 @@
 		NSLog(@"Error! %@, %@", error, [error userInfo]);
 		abort();
 	}
+	
+	[p drain];
+	
 	return character;
 	
 }

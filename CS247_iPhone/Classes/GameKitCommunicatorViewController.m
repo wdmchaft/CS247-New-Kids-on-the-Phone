@@ -131,7 +131,7 @@
 	if (imageToSend == NULL) {
 		imageToSend = [UIImage imageNamed:@"stealmic.png"];
 	}
-	NSData *imageData = UIImageJPEGRepresentation(imageToSend,.3);
+	NSData *imageData = UIImageJPEGRepresentation(imageToSend,.1);
 	
 	//Send how many chunks over
 	NSUInteger fiftyK = 51200;

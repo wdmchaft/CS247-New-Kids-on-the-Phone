@@ -19,7 +19,7 @@
 - (id)initWithCharacter:(Character *)character {
 		
 	UIImage *img = [UIImage imageWithContentsOfFile:character.imageFile];
-	NSLog(@"img ptr: %i", img);
+	NSLog(@"loading image at %@", character.imageFile);
 	CGRect imageRect = CGRectMake(40.0, 10.0, 200, 0.0);
 	imageRect.size.height = 200 * img.size.height / img.size.width;
 	self = [[TouchImageView alloc] initWithFrame:imageRect];
@@ -45,8 +45,8 @@
     self.userInteractionEnabled = YES;
     self.multipleTouchEnabled = YES;
     self.exclusiveTouch = NO;
-	UILongPressGestureRecognizer* gest = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture)];
-	[self addGestureRecognizer:gest];
+//	UILongPressGestureRecognizer* gest = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture)];
+//	[self addGestureRecognizer:gest];
 	self.poppedup = NO;
     return self;
 }
@@ -119,8 +119,16 @@
 	NSLog(@"%f , %f " , location.x, location.y);
 	if (location.x > 942 && location.x < (947+95) && location.y > 650 && location.y < (664+104)) {
 		NSLog(@"BAM!");
-		[self.viewController removeImg:self];
-		[self removeFromSuperview];
+		NSLog(@"a: %f b: %f c: %f d:%f tx: %f ty: %f ", self.transform.a, self.transform.b, self.transform.c, self.transform.d, self.transform.tx, self.transform.ty);
+		CGAffineTransform shrink = CGAffineTransformMake(0.2356, 0.000730, -0.000730, 0.235612, 792.394958, 441.212341);
+		[UIView animateWithDuration:.5
+						 animations:^{ self.transform = shrink;}
+						 completion:^(BOOL finished){
+							 [self.viewController removeImg:self];
+							 [self removeFromSuperview];
+						}
+		 ];
+		
 		return;
 	}
     [self updateOriginalTransformForTouches:[event touchesForView:self]];

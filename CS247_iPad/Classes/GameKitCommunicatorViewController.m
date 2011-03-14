@@ -186,7 +186,10 @@
 		NSUInteger chunkCount = [chunkCountStr intValue];
 		NSLog(@"Received Data from %@ #%d %@",peer, chunkCount, chunkCountStr);
 		if (chunkCount > 0) {
-			[data dealloc];
+			if (data) {
+				[data release];
+				data = nil;
+			}
 			data = [[NSMutableData alloc] init];
 			chunks = 1;
 			totalChunks = chunkCount;
@@ -207,6 +210,7 @@
 			trashButton.alpha = 1;
 			NSLog(@"received bytes: %i", [data length]);
 			UIImage *receivedimg = [UIImage imageWithData:data];
+			[data release]; data = nil;
 			CGRect imageRect = CGRectMake(40.0, 10.0, 200, 0.0);
 			imageRect.size.height = 200 * receivedimg.size.height / receivedimg.size.width;
 			TouchImageView *touchImageView = [[TouchImageView alloc] initWithFrame:imageRect];
@@ -366,10 +370,12 @@
 	Scene *scene = [Scene sceneInManagedObjectContext:managedObjectContext];
 	
 	NSMutableArray *characters = [[NSMutableArray alloc] init];
-	for (TouchImageView *touchView in touchViews) {
+	for (int i = 0; i < [touchViews count]; i++) {
+		TouchImageView *touchView = [touchViews objectAtIndex:i];
 		Character *character = [Character characterForTouchImageView:touchView inScene:scene inManagedObjectContext:managedObjectContext];
 		[characters addObject:character];
 		[character release];
+		character = nil;
 	}
 	
 	/*
@@ -397,6 +403,7 @@
 	// load audio from scene
 	NSString *cacheDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
 	NSURL *soundURL = [NSURL URLWithString:[cacheDirectory stringByAppendingPathComponent:@"narration.aif"]];
+	NSLog(@"loading audio at %@", scene.audioFile);
 	NSData *audioData = [NSData dataWithContentsOfFile:scene.audioFile];
 	[audioData writeToURL:soundURL atomically:YES];
 	

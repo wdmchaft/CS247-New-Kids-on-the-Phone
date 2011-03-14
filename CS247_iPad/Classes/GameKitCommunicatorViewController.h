@@ -57,6 +57,7 @@
 -(IBAction) saveRecording;
 -(IBAction)loadRecording;
 -(IBAction) trashHit:(id)sender;
+-(void)removeImg:(id)imgview;
 
 -(void)playbackEnded;
 -(void)startRecording:(NSTimer *)timer;
