@@ -365,9 +365,23 @@
 	}
 }
 
-- (IBAction)saveRecording {
+- (IBAction)saveButtonPressed:(id)sender {
+	[UIView animateWithDuration:.5 animations:^{ sceneNameView.alpha = 1; }];
+	[sceneName becomeFirstResponder];
+}
+
+- (IBAction)sceneNameButtonPressed:(id)sender {
+	NSString *sceneNameText = sceneName.text;
+	[sceneName resignFirstResponder];
+	[UIView animateWithDuration:.5 animations:^{ sceneNameView.alpha = 0; }];
+	sceneName.text = @"";
+	[self saveRecording:sceneNameText];
+}
+
+- (void)saveRecording:(NSString *)name {
 	
-	Scene *scene = [Scene sceneInManagedObjectContext:managedObjectContext];
+	//Scene *scene = [Scene sceneInManagedObjectContext:managedObjectContext];
+	Scene *scene = [Scene sceneName:name withBackground:@"" inManagedObjectContext:managedObjectContext];
 	
 	for (int i = 0; i < [touchViews count]; i++) {
 		TouchImageView *touchView = [touchViews objectAtIndex:i];
@@ -391,6 +405,7 @@
 	NSString *cacheDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
 	//NSURL *soundURL = [NSURL URLWithString:[cacheDirectory stringByAppendingPathComponent:@"narration.aif"]];
 	NSString *soundPath = [cacheDirectory stringByAppendingPathComponent:@"narration.aif"];
+	NSLog(@"loading scene: %@", scene.name);
 	NSLog(@"loading audio at %@", scene.audioFile);
 	NSData *audioData = [NSData dataWithContentsOfFile:scene.audioFile];
 	[audioData writeToFile:soundPath atomically:YES];

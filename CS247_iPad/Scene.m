@@ -21,20 +21,14 @@
 @dynamic background;
 
 
-+ (Scene *)sceneWithBackground:(Background *)bground inManagedObjectContext:(NSManagedObjectContext *)context {
++ (Scene *)sceneName:(NSString *)sceneName withBackground:(NSString *)bground inManagedObjectContext:(NSManagedObjectContext *)context {
 	Scene *scene = nil;
 	
+	NSLog(@"creating scene: %@", sceneName);
 	
-//	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-//	request.entity = [NSEntityDescription entityForName:@"Scene" inManagedObjectContext:context];
-//	request.predicate = [NSPredicate predicateWithFormat:@"name = %@", exerName];
-//	
-//	Scene = [[context executeFetchRequest:request error:&error] lastObject];
+	scene = [Scene sceneInManagedObjectContext:context];
 	
-
-	scene = [NSEntityDescription insertNewObjectForEntityForName:@"Scene" inManagedObjectContext:context];
-	scene.time = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
-	scene.background = bground;
+	scene.name = sceneName;
 	
 	//save any changes
 	NSError *error = nil;

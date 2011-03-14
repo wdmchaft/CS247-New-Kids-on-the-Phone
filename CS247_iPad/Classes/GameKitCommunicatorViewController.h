@@ -22,6 +22,8 @@
 	IBOutlet UIButton *rewindButton;
 	IBOutlet UIButton *trashButton;
 	IBOutlet UIButton *homeButton;
+	IBOutlet UITextField *sceneName;
+	IBOutlet UIView *sceneNameView;
 
 
 	IBOutlet UIView *dimView;
@@ -54,9 +56,12 @@
 -(IBAction) playButtonPressed:(id)sender;
 -(IBAction) stopButtonPressed:(id)sender;
 -(IBAction) sendData:(id)sender;
--(IBAction) saveRecording;
 -(IBAction)loadRecording;
 -(IBAction) trashHit:(id)sender;
+- (IBAction)saveButtonPressed:(id)sender;
+- (IBAction)sceneNameButtonPressed:(id)sender;
+-(void) saveRecording:(NSString *)name;
+
 -(void)removeImg:(id)imgview;
 
 -(void)playbackEnded;

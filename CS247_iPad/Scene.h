@@ -24,7 +24,7 @@
 
 
 + (Scene *)sceneInManagedObjectContext:(NSManagedObjectContext *)context;
-+ (Scene *)sceneWithBackground:(Background *)bground inManagedObjectContext:(NSManagedObjectContext *)context;
++ (Scene *)sceneName:(NSString *)sceneName withBackground:(NSString *)bground inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end
 
