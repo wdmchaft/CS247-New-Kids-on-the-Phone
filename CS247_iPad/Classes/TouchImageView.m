@@ -28,6 +28,7 @@
 		self.center = CGPointMake(160.0, 230.0);
 		animationSequence = (NSMutableArray *)[NSKeyedUnarchiver unarchiveObjectWithData:character.animation];
 		[animationSequence retain];
+		self.transform = [self CGAffineTransformForDictionary:[animationSequence objectAtIndex:0]];
 	}
 	return self;
 }
