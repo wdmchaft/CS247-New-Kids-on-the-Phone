@@ -15,6 +15,8 @@
 		2899E5220DE3E06400AC0155 /* CS247_iPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* CS247_iPadViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* CS247_iPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* CS247_iPadViewController.m */; };
+		7C6519C9132EBDBE00355214 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6519C8132EBDBE00355214 /* CoreDataTableViewController.m */; };
+		7C6519D6132EBE7200355214 /* SceneCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6519D5132EBE7200355214 /* SceneCoreDataTableViewController.m */; };
 		7C8746B9130D3E46009064D6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8746B8130D3E46009064D6 /* AVFoundation.framework */; };
 		7C9FD9A5131FA7A500FB8BD1 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C9FD9A4131FA7A500FB8BD1 /* save.png */; };
 		7CC3E392131C1F610022EC11 /* CS247_iPad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3E390131C1F610022EC11 /* CS247_iPad.xcdatamodeld */; };
@@ -72,6 +74,10 @@
 		28D7ACF70DDB3853001CB0EB /* CS247_iPadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CS247_iPadViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* CS247_iPad_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CS247_iPad_Prefix.pch; sourceTree = "<group>"; };
+		7C6519C7132EBDBD00355214 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
+		7C6519C8132EBDBE00355214 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
+		7C6519D4132EBE7200355214 /* SceneCoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneCoreDataTableViewController.h; sourceTree = "<group>"; };
+		7C6519D5132EBE7200355214 /* SceneCoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneCoreDataTableViewController.m; sourceTree = "<group>"; };
 		7C8746B8130D3E46009064D6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7C9FD9A4131FA7A500FB8BD1 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
 		7CC3E391131C1F610022EC11 /* CS247_iPad.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = CS247_iPad.xcdatamodel; sourceTree = "<group>"; };
@@ -155,6 +161,10 @@
 				92B1824913288F3A00B23C53 /* MainMenuViewController.h */,
 				92B1824A13288F3A00B23C53 /* MainMenuViewController.m */,
 				92B1824B13288F3A00B23C53 /* MainMenuViewController.xib */,
+				7C6519D4132EBE7200355214 /* SceneCoreDataTableViewController.h */,
+				7C6519D5132EBE7200355214 /* SceneCoreDataTableViewController.m */,
+				7C6519C7132EBDBD00355214 /* CoreDataTableViewController.h */,
+				7C6519C8132EBDBE00355214 /* CoreDataTableViewController.m */,
 				92A3BD10130CEC760066430F /* TouchImageView.h */,
 				92A3BD11130CEC760066430F /* TouchImageView.m */,
 			);
@@ -355,6 +365,8 @@
 				7CDC04DE130CF50A00EA9A46 /* Scene.m in Sources */,
 				7CC3E392131C1F610022EC11 /* CS247_iPad.xcdatamodeld in Sources */,
 				92B1824C13288F3A00B23C53 /* MainMenuViewController.m in Sources */,
+				7C6519C9132EBDBE00355214 /* CoreDataTableViewController.m in Sources */,
+				7C6519D6132EBE7200355214 /* SceneCoreDataTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

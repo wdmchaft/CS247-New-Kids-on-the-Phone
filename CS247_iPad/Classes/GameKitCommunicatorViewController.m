@@ -138,6 +138,7 @@
 	// Start your game.
 	MainMenuViewController* menu = [[MainMenuViewController alloc] initWithNibName:@"MainMenuViewController" bundle:nil];
 	menu.gk = self;
+	menu.managedObjectContext = self.managedObjectContext;
 	[self presentModalViewController:menu animated:YES];
 	[menu release];
 	//[UIView animateWithDuration:1 animations:^{ background.alpha = 1; recButton.alpha = 1;connectButton.alpha= 0;} completion:^(BOOL finished) { connectButton.hidden = YES; }];
@@ -305,6 +306,7 @@
 -(IBAction) homeClicked:(id)sender {
 	MainMenuViewController* menu = [[MainMenuViewController alloc] initWithNibName:@"MainMenuViewController" bundle:nil];
 	menu.gk = self;
+	menu.managedObjectContext = self.managedObjectContext;
     [self presentModalViewController:menu animated:YES];
 	[menu release];
 }

@@ -7,10 +7,12 @@
 //
 
 #import "MainMenuViewController.h"
+#import "CS247_iPadAppDelegate.h"
 
 
 @implementation MainMenuViewController
-@synthesize gk;
+@synthesize gk, managedObjectContext;
+
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -35,6 +37,19 @@
 	lab4.alpha = 0;
 	lab5.alpha = 0;
 	newView.alpha = 0;
+	loadView.alpha = 0;
+	
+	//init the table view
+	if (managedObjectContext == nil) 
+	{ 
+        managedObjectContext = [(CS247_iPadAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
+	}
+	
+	sceneTableViewController = [[SceneCoreDataTableViewController alloc] initInManagedObjectContext:self.managedObjectContext];
+	sceneTableViewController.view.frame = loadView.bounds;
+	sceneTableViewController.view.backgroundColor = loadView.backgroundColor;
+	[loadView addSubview:sceneTableViewController.view];
+	
     [super viewDidLoad];
 	
 }
@@ -52,23 +67,23 @@
 		lab4.alpha = 1;
 		lab5.alpha = 1;
 		newView.alpha = 1;
+		loadView.alpha = 0;
 	} completion:^(BOOL finished) {}];
 }
 -(IBAction) loadClicked:(id)sender{
-	if (castleButton.alpha == 1){
-		[UIView animateWithDuration:1 animations:^{ 
-			castleButton.alpha = 0;
-			sunnyButton.alpha = 0;
-			spaceButton.alpha = 0;
-			oceanButton.alpha = 0;
-			lab1.alpha = 0;
-			lab2.alpha = 0;
-			lab3.alpha = 0;
-			lab4.alpha = 0;
-			lab5.alpha = 0;
-			newView.alpha = 0;
-		} completion:^(BOOL finished) {}];
-	}
+	[UIView animateWithDuration:1 animations:^{ 
+		castleButton.alpha = 0;
+		sunnyButton.alpha = 0;
+		spaceButton.alpha = 0;
+		oceanButton.alpha = 0;
+		lab1.alpha = 0;
+		lab2.alpha = 0;
+		lab3.alpha = 0;
+		lab4.alpha = 0;
+		lab5.alpha = 0;
+		newView.alpha = 0;
+		loadView.alpha = 1;
+	} completion:^(BOOL finished) {}];
 }
 -(IBAction) castleClicked:(id)sender{
 	[gk backgroundPicked:0];
@@ -109,6 +124,7 @@
 
 
 - (void)dealloc {
+	[sceneTableViewController release];
     [super dealloc];
 }
 

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GameKitCommunicatorViewController.h"
+#import "SceneCoreDataTableViewController.h"
 
 @interface MainMenuViewController : UIViewController {
 	IBOutlet UIButton *newButton;
@@ -23,8 +24,14 @@
 	IBOutlet UILabel *lab3;
 	IBOutlet UILabel *lab4;
 	IBOutlet UILabel *lab5;
+	
+	IBOutlet UIView  *loadView;
 
 	GameKitCommunicatorViewController* gk;
+	
+	SceneCoreDataTableViewController *sceneTableViewController;
+	
+	NSManagedObjectContext *managedObjectContext;
 
 }
 
@@ -36,5 +43,6 @@
 -(IBAction) sunnyClicked:(id)sender;
 
 @property (nonatomic,retain)	GameKitCommunicatorViewController* gk;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 @end
