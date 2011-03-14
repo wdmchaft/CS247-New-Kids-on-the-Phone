@@ -168,6 +168,7 @@
 						<string key="NSFrame">{{102, 711}, {83, 29}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<bool key="IBUIOpaque">NO</bool>
+						<float key="IBUIAlpha">0.0</float>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
@@ -190,6 +191,7 @@
 						<string key="NSFrame">{{209, 703}, {72, 37}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<bool key="IBUIOpaque">NO</bool>
+						<float key="IBUIAlpha">0.0</float>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
@@ -209,6 +211,7 @@
 						<string key="NSFrame">{{14, 649}, {73, 91}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<bool key="IBUIOpaque">NO</bool>
+						<float key="IBUIAlpha">0.0</float>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
@@ -559,6 +562,14 @@
 					</object>
 					<int key="connectionID">58</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">saveButton</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="888356863"/>
+					</object>
+					<int key="connectionID">59</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -802,7 +813,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">58</int>
+			<int key="maxID">59</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -917,6 +928,7 @@
 							<string>playButton</string>
 							<string>recButton</string>
 							<string>rewindButton</string>
+							<string>saveButton</string>
 							<string>sceneName</string>
 							<string>sceneNameView</string>
 							<string>spinner</string>
@@ -929,6 +941,7 @@
 							<string>UIButton</string>
 							<string>UILabel</string>
 							<string>UIView</string>
+							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
@@ -952,6 +965,7 @@
 							<string>playButton</string>
 							<string>recButton</string>
 							<string>rewindButton</string>
+							<string>saveButton</string>
 							<string>sceneName</string>
 							<string>sceneNameView</string>
 							<string>spinner</string>
@@ -990,6 +1004,10 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">rewindButton</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">saveButton</string>
 								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">

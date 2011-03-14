@@ -21,7 +21,7 @@
 @dynamic background;
 
 
-+ (Scene *)sceneName:(NSString *)sceneName withBackground:(NSString *)bground inManagedObjectContext:(NSManagedObjectContext *)context {
++ (Scene *)sceneName:(NSString *)sceneName withBackground:(NSNumber *)bground inManagedObjectContext:(NSManagedObjectContext *)context {
 	Scene *scene = nil;
 	
 	NSLog(@"creating scene: %@", sceneName);
@@ -29,6 +29,7 @@
 	scene = [Scene sceneInManagedObjectContext:context];
 	
 	scene.name = sceneName;
+	scene.background = bground;
 	
 	//save any changes
 	NSError *error = nil;

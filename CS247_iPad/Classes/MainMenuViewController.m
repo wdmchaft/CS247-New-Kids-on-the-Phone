@@ -40,15 +40,17 @@
 	loadView.alpha = 0;
 	
 	//init the table view
-	if (managedObjectContext == nil) 
-	{ 
-        managedObjectContext = [(CS247_iPadAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
-	}
+//	if (managedObjectContext == nil) 
+//	{ 
+//        managedObjectContext = [(CS247_iPadAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
+//	}
 	
 	sceneTableViewController = [[SceneCoreDataTableViewController alloc] initInManagedObjectContext:self.managedObjectContext];
 	sceneTableViewController.view.frame = loadView.bounds;
 	sceneTableViewController.view.backgroundColor = loadView.backgroundColor;
+	sceneTableViewController.menu = self;
 	[loadView addSubview:sceneTableViewController.view];
+	[sceneTableViewController performFetchForTableView:sceneTableViewController.tableView];
 	
     [super viewDidLoad];
 	
@@ -85,6 +87,12 @@
 		loadView.alpha = 1;
 	} completion:^(BOOL finished) {}];
 }
+
+- (void)loadScene:(NSManagedObject *)scene {
+	[self.gk loadScene:scene];
+	[gk dismissModalViewControllerAnimated:YES];
+}
+
 -(IBAction) castleClicked:(id)sender{
 	[gk backgroundPicked:0];
 	[gk dismissModalViewControllerAnimated:YES];

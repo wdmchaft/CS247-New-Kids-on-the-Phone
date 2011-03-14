@@ -11,7 +11,9 @@
 
 @implementation SceneCoreDataTableViewController
 
-- initInManagedObjectContext:(NSManagedObjectContext *)context
+@synthesize menu;
+
+- (SceneCoreDataTableViewController *)initInManagedObjectContext:(NSManagedObjectContext *)context
 {
 	if (self = [super initWithStyle:UITableViewStylePlain])
 	{
@@ -40,6 +42,8 @@
 
 - (void)managedObjectSelected:(NSManagedObject *)managedObject
 {
+	[self.menu loadScene:managedObject];
+	
 	/*
 	GraphViewController *gvc = [[GraphViewController alloc] initWithExercise:(Exercise *)managedObject inManagedObjectContext:self.fetchedResultsController.managedObjectContext]; 
 	gvc.title = @"Graph";
@@ -47,6 +51,11 @@
 		[self.navigationController pushViewController:gvc animated:YES];
 	}
 	 */
+}
+
+- (void)dealloc {
+	[menu release];
+	[super dealloc];
 }
 
 

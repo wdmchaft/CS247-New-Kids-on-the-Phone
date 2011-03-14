@@ -147,6 +147,7 @@
 }
 
 -(void)backgroundPicked:(int) backgroundnum{
+	backgroundNumber = backgroundnum;
 	switch (backgroundnum) {
 		case 0:
 			background.image = [UIImage imageNamed:@"castle.png"];
@@ -163,7 +164,8 @@
 		default:
 			break;
 	}
-	[UIView animateWithDuration:1 animations:^{ background.alpha = 1; recButton.alpha = 1;connectButton.alpha= 0;} completion:^(BOOL finished) { connectButton.hidden = YES; }];
+	connectButton.alpha= 0;
+	[UIView animateWithDuration:1 animations:^{ background.alpha = 1; recButton.alpha = 1; homeButton.alpha = 1;} completion:^(BOOL finished) { connectButton.hidden = YES; }];
 	
 }
 -(IBAction) sendData:(id)sender{
@@ -278,6 +280,13 @@
 
 #pragma mark UI methods
 
+- (void)clearTouchViews {
+	for (TouchImageView *tiv in touchViews) {
+		[tiv removeFromSuperview];
+		[self removeImg:tiv];
+	}
+}
+
 - (void)startRecording:(NSTimer *)timer {
 	recordmode = true;
 	
@@ -296,7 +305,7 @@
 	if (!recorder) recorder = [[AVAudioRecorder alloc] initWithURL:recordURL settings:nil error:NULL];
 	[recorder record];
 	
-	[UIView animateWithDuration:.2 animations:^{ stopButton.alpha = 1; recButton.alpha= 0; playButton.alpha = 0; rewindButton.alpha = 0;}];
+	[UIView animateWithDuration:.2 animations:^{ stopButton.alpha = 1; recButton.alpha= 0; playButton.alpha = 0; rewindButton.alpha = 0; homeButton.alpha = 0; saveButton.alpha = 0;}];
 	
 }
 
@@ -349,7 +358,7 @@
 		[tview stopRecording];
 	}
 	[recorder stop];
-	[UIView animateWithDuration:.5 animations:^{ recButton.alpha = 1; playButton.alpha = 1; rewindButton.alpha = 1; stopButton.alpha= 0;}];
+	[UIView animateWithDuration:.5 animations:^{ recButton.alpha = 1; playButton.alpha = 1; rewindButton.alpha = 1; stopButton.alpha= 0; homeButton.alpha = 1; saveButton.alpha = 1;}];
 	
 }
 
@@ -383,7 +392,7 @@
 - (void)saveRecording:(NSString *)name {
 	
 	//Scene *scene = [Scene sceneInManagedObjectContext:managedObjectContext];
-	Scene *scene = [Scene sceneName:name withBackground:@"" inManagedObjectContext:managedObjectContext];
+	Scene *scene = [Scene sceneName:name withBackground:[NSNumber numberWithInt:backgroundNumber] inManagedObjectContext:managedObjectContext];
 	
 	for (int i = 0; i < [touchViews count]; i++) {
 		TouchImageView *touchView = [touchViews objectAtIndex:i];
@@ -391,6 +400,58 @@
 	}
 	
 	NSLog(@"successfully saved scene");
+}
+
+- (void)loadScene:(NSManagedObject *)sceneObj {
+	[self clearTouchViews];
+	
+	Scene *scene = (Scene *)sceneObj;
+	
+	//load background image
+	[self backgroundPicked:[scene.background intValue]];
+	
+	// load audio from scene
+	NSString *cacheDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+	//NSURL *soundURL = [NSURL URLWithString:[cacheDirectory stringByAppendingPathComponent:@"narration.aif"]];
+	NSString *soundPath = [cacheDirectory stringByAppendingPathComponent:@"narration.aif"];
+	NSLog(@"loading scene: %@", scene.name);
+	NSLog(@"loading audio at %@", scene.audioFile);
+	NSData *audioData = [NSData dataWithContentsOfFile:scene.audioFile];
+	[audioData writeToFile:soundPath atomically:YES];
+	recordURL = [[NSURL alloc] initWithString:soundPath];
+	
+	// get the characters in the scene
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	request.entity = [NSEntityDescription entityForName:@"Character" inManagedObjectContext:managedObjectContext];
+	request.predicate = [NSPredicate predicateWithFormat:@"scene = %@", scene];
+	request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"time"
+																					 ascending:YES]];
+	request.fetchBatchSize = 20;
+	
+	NSFetchedResultsController *frc = [[NSFetchedResultsController alloc]
+									   initWithFetchRequest:request
+									   managedObjectContext:managedObjectContext
+									   sectionNameKeyPath:nil
+									   cacheName:nil];
+	[request release];
+	
+	NSError *error = nil;
+	BOOL success = [frc performFetch:&error];
+	if (success) {
+		for (int i = 0; i < [frc.fetchedObjects count]; i++) {
+			Character *character = [frc.fetchedObjects objectAtIndex:i];
+			TouchImageView *tiv = [[TouchImageView alloc] initWithCharacter:character];
+			//[character release];
+			tiv.viewController = self;
+			[self.view insertSubview:tiv belowSubview:recButton];
+			[touchViews addObject:tiv];
+			//[tiv release];
+		}
+	}
+	
+	[frc release];
+	[UIView animateWithDuration:.2 animations:^{recButton.alpha = 1; playButton.alpha = 1; rewindButton.alpha = 1; trashButton.alpha = 1;}];
+	
 }
 
 - (IBAction)loadRecording {

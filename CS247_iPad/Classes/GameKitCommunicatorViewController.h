@@ -22,6 +22,7 @@
 	IBOutlet UIButton *rewindButton;
 	IBOutlet UIButton *trashButton;
 	IBOutlet UIButton *homeButton;
+	IBOutlet UIButton *saveButton;
 	IBOutlet UITextField *sceneName;
 	IBOutlet UIView *sceneNameView;
 
@@ -36,7 +37,7 @@
 	AVAudioRecorder *recorder;
 	NSURL *recordURL;
 
-
+	int backgroundNumber;
 	IBOutlet UIImageView *background;
 	IBOutlet UIActivityIndicatorView *spinner;
 	NSMutableArray *mPeers;
@@ -61,8 +62,9 @@
 - (IBAction)saveButtonPressed:(id)sender;
 - (IBAction)sceneNameButtonPressed:(id)sender;
 -(void) saveRecording:(NSString *)name;
-
+- (void)clearTouchViews;
 -(void)removeImg:(id)imgview;
+- (void)loadScene:(NSManagedObject *)scene;
 
 -(void)playbackEnded;
 -(void)startRecording:(NSTimer *)timer;

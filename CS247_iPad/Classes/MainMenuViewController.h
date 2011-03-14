@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GameKitCommunicatorViewController.h"
 #import "SceneCoreDataTableViewController.h"
+#import <CoreData/CoreData.h>
 
 @interface MainMenuViewController : UIViewController {
 	IBOutlet UIButton *newButton;
@@ -41,6 +42,7 @@
 -(IBAction) oceanClicked:(id)sender;
 -(IBAction) spaceClicked:(id)sender;
 -(IBAction) sunnyClicked:(id)sender;
+- (void)loadScene:(NSManagedObject *)scene;
 
 @property (nonatomic,retain)	GameKitCommunicatorViewController* gk;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;

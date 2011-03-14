@@ -10,11 +10,16 @@
 #import <Foundation/Foundation.h>
 #import "CoreDataTableViewController.h"
 
+@class MainMenuViewController;
+
 
 @interface SceneCoreDataTableViewController : CoreDataTableViewController {
-
+	MainMenuViewController *menu;
 }
 
-- initInManagedObjectContext:(NSManagedObjectContext *)context;
+@property (nonatomic, retain) MainMenuViewController *menu;
+
+- (SceneCoreDataTableViewController *)initInManagedObjectContext:(NSManagedObjectContext *)context;
+
 
 @end

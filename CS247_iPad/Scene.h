@@ -20,11 +20,11 @@
 @property (nonatomic, retain) NSString * audioFile;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet* characters;
-@property (nonatomic, retain) Background * background;
+@property (nonatomic, retain) NSNumber* background;
 
 
 + (Scene *)sceneInManagedObjectContext:(NSManagedObjectContext *)context;
-+ (Scene *)sceneName:(NSString *)sceneName withBackground:(NSString *)bground inManagedObjectContext:(NSManagedObjectContext *)context;
++ (Scene *)sceneName:(NSString *)sceneName withBackground:(NSNumber *)bground inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end
 
