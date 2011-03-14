@@ -48,6 +48,7 @@
 
 + (Scene *)sceneInManagedObjectContext:(NSManagedObjectContext *)context {
 	Scene *scene = nil;
+	scene = [NSEntityDescription insertNewObjectForEntityForName:@"Scene" inManagedObjectContext:context];
 
 	NSString *timestring = [NSString stringWithFormat:@"%f", ([[NSDate date] timeIntervalSince1970] * 1000000)];
 	timestring = [[timestring componentsSeparatedByString:@"."] objectAtIndex:0];
@@ -59,15 +60,15 @@
 	
 	// get the narration.aif sound file
 	NSString *cacheDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-	NSURL *soundURL = [NSURL URLWithString:[cacheDirectory stringByAppendingPathComponent:@"narration.aif"]];
-	NSData *soundData = [NSData dataWithContentsOfURL:soundURL];
+	//NSURL *soundURL = [NSURL URLWithString:[cacheDirectory stringByAppendingPathComponent:@"narration.aif"]];
+	NSString *soundPath = [cacheDirectory stringByAppendingPathComponent:@"narration.aif"];
+	NSData *soundData = [NSData dataWithContentsOfFile:soundPath];
 	
 	NSLog(@"saving audio at %@", savePath);
 	
 	[soundData writeToFile:savePath atomically:YES];
 	scene.audioFile = savePath;
 	
-	scene = [NSEntityDescription insertNewObjectForEntityForName:@"Scene" inManagedObjectContext:context];
 	scene.time = timestring;
 	scene.name = @"";
 	

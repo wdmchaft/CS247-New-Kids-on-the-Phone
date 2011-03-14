@@ -369,24 +369,11 @@
 	
 	Scene *scene = [Scene sceneInManagedObjectContext:managedObjectContext];
 	
-	NSMutableArray *characters = [[NSMutableArray alloc] init];
 	for (int i = 0; i < [touchViews count]; i++) {
 		TouchImageView *touchView = [touchViews objectAtIndex:i];
 		Character *character = [Character characterForTouchImageView:touchView inScene:scene inManagedObjectContext:managedObjectContext];
-		[characters addObject:character];
-		[character release];
-		character = nil;
 	}
 	
-	/*
-	for (Character *character in characters) {
-		TouchImageView *tiv = [[TouchImageView alloc] initWithCharacter:character];
-		tiv.viewController = self;
-		[self.view insertSubview:tiv belowSubview:recButton];
-		[touchViews addObject:tiv];
-		[tiv release];
-	}
-	*/
 	NSLog(@"successfully saved scene");
 }
 
@@ -402,10 +389,12 @@
 	
 	// load audio from scene
 	NSString *cacheDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-	NSURL *soundURL = [NSURL URLWithString:[cacheDirectory stringByAppendingPathComponent:@"narration.aif"]];
+	//NSURL *soundURL = [NSURL URLWithString:[cacheDirectory stringByAppendingPathComponent:@"narration.aif"]];
+	NSString *soundPath = [cacheDirectory stringByAppendingPathComponent:@"narration.aif"];
 	NSLog(@"loading audio at %@", scene.audioFile);
 	NSData *audioData = [NSData dataWithContentsOfFile:scene.audioFile];
-	[audioData writeToURL:soundURL atomically:YES];
+	[audioData writeToFile:soundPath atomically:YES];
+	recordURL = [[NSURL alloc] initWithString:soundPath];
 	
 	// get the characters in the scene
 	request = [[NSFetchRequest alloc] init];
