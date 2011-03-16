@@ -1,0 +1,9 @@
+FaceStory bugs
+- crashes if play is pressed after a recording in which at least one of the touchviews was not moved
+- crashes when a touchview is in motion when the record button is pressed
+- touchviews occasionally appear over the countdown view
+- crashes when the screen is touched during countdown 
+- the save button sometimes reappears before the end of a recording
+
+Todos
+- touched image needs to be placed on top; order needs to be recorded for playback
